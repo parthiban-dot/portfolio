@@ -7,6 +7,7 @@ import { HeroSection } from "@/components/hero/HeroSection";
 import { AboutSection } from "@/components/about/AboutSection";
 import { SkillsSection } from "@/components/skills/SkillsSection";
 import { ProjectsSection } from "@/components/projects/ProjectsSection";
+import { DracarysFeature } from "@/components/dracarys/DracarysFeature";
 import { JourneySection } from "@/components/journey/JourneySection";
 import { AgentConsole } from "@/components/interactive/AgentConsole";
 import { ContactSection } from "@/components/contact/ContactSection";
@@ -27,6 +28,7 @@ export default function Home() {
         <AboutSection />
         <SkillsSection />
         <ProjectsSection />
+        <DracarysFeature />
         <JourneySection />
         <AgentConsole />
         <ContactSection />
