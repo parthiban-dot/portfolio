@@ -1,0 +1,188 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+
+interface ContactChannel {
+  name: string;
+  icon: string;
+  url: string;
+}
+
+export function ContactOrbit() {
+  const [windowWidth, setWindowWidth] = useState<number | null>(null);
+
+  useEffect(() => {
+    const update = () => setWindowWidth(window.innerWidth);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  const innerChannels: ContactChannel[] = [
+    { name: "GitHub", icon: "/icons/github1.svg", url: "https://github.com/parthiban-dot" },
+    { name: "LinkedIn", icon: "/icons/linkedin.svg", url: "https://www.linkedin.com/in/parthi-xii-581493376?utm_source=share_via&utm_content=profile&utm_medium=member_android" },
+    { name: "Email", icon: "/icons/email.svg", url: "mailto:vinayagamparthiban07@gmail.com" },
+  ];
+
+  const outerChannels: ContactChannel[] = [
+    { name: "Instagram", icon: "/icons/instagram.svg", url: "https://www.instagram.com/its_.prince._here?stkn=MXBld3RqdGVjZ3pnMw==" },
+    { name: "DRACARYS", icon: "/icons/next.svg", url: "https://dracarysweb.vercel.app/" },
+    { name: "WhatsApp", icon: "/icons/whatsapp.svg", url: "https://wa.me/?text=Hi%20Parthiban%2C%20I%20came%20across%20your%20portfolio!" },
+    { name: "Portfolio", icon: "/icons/github1.svg", url: "https://github.com/parthiban-dot/portfolio" },
+  ];
+
+  const handleEmailClick = () => {
+    const email = "vinayagamparthiban07@gmail.com";
+    const subject = encodeURIComponent("Hello Parthiban!");
+    const body = encodeURIComponent("Hi Parthiban,\n\nI came across your portfolio and would love to connect about a project or collaboration.");
+
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const isChrome = !isMobile && navigator.userAgent.includes("Chrome") && !navigator.userAgent.includes("Edge");
+
+    if (isChrome) {
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`;
+      window.open(gmailUrl, "_blank");
+      return;
+    }
+
+    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+  };
+
+  if (windowWidth === null) return null;
+
+  const isMedium = windowWidth < 1200;
+  const isSmall = windowWidth < 700;
+
+  const innerRadius = isSmall ? 75 : isMedium ? 120 : 210;
+  const outerRadius = isSmall ? 145 : isMedium ? 240 : 460;
+  const earthSize = isSmall ? 90 : isMedium ? 140 : 280;
+
+  const iconSize = isSmall ? 12 : isMedium ? 18 : 22;
+  const innerW = isSmall ? 64 : isMedium ? 90 : 120;
+  const innerH = isSmall ? 24 : isMedium ? 36 : 46;
+
+  const outerW = isSmall ? 68 : isMedium ? 96 : 130;
+  const outerH = isSmall ? 24 : isMedium ? 36 : 46;
+  const textSize = isSmall ? "text-[8px]" : isMedium ? "text-xs" : "text-sm";
+
+  return (
+    <section id="contact" className="flex flex-col items-center justify-center bg-[#03040A] overflow-hidden py-24 w-full relative">
+      <h2 className="text-[#E6E6F1] text-2xl md:text-4xl font-bold text-center">
+        Reach Me from Earth
+      </h2>
+      <p className="mt-4 text-[#FFEDC2] text-sm md:text-lg text-center px-4 max-w-xl">
+        No matter where you are, your signal will always find me.
+      </p>
+
+      <div className="relative w-full h-[450px] sm:h-[650px] md:h-[820px] mt-6 sm:mt-16 xl:mt-24">
+        
+        {/* Subtle Orbit Rings */}
+        <div
+          style={{ width: `${innerRadius * 2}px`, height: `${innerRadius * 2}px` }}
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[#A18AFF]/30 pointer-events-none"
+        />
+        <div
+          style={{ width: `${outerRadius * 2}px`, height: `${outerRadius * 2}px` }}
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[#3F4454]/30 pointer-events-none"
+        />
+
+        {/* Center Rotating Earth */}
+        <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-spin-slow z-10 pointer-events-none">
+          <Image
+            src="/images/earth.png"
+            alt="Earth"
+            width={earthSize}
+            height={earthSize}
+            className="rounded-full shadow-[0_0_60px_rgba(100,160,255,0.25)]"
+          />
+        </div>
+
+        {/* Inner Orbit (30s) */}
+        <div
+          style={{ animation: "innerOrbit 30s linear infinite", transformOrigin: "0 0" }}
+          className="absolute left-1/2 top-1/2"
+        >
+          {innerChannels.map((channel, i) => {
+            const angle = (i / innerChannels.length) * 2 * Math.PI - Math.PI / 2;
+            const x = Math.cos(angle) * innerRadius;
+            const y = Math.sin(angle) * innerRadius;
+
+            const commonStyle = {
+              width: `${innerW}px`,
+              height: `${innerH}px`,
+              left: `calc(50% + ${x}px)`,
+              top: `calc(50% + ${y}px)`,
+              transform: "translate(-50%, -50%)",
+              animation: "counterOrbit 30s linear infinite",
+            };
+
+            const commonClass = `absolute flex items-center justify-center gap-1.5 sm:gap-2 bg-[#10121B] border border-[#A18AFF] shadow-[0_0_12px_rgba(161,143,255,0.6)] px-2 ${textSize} cursor-pointer hover:scale-105 transition-transform select-none`;
+
+            if (channel.name === "Email") {
+              return (
+                <button
+                  key={channel.name}
+                  onClick={handleEmailClick}
+                  style={commonStyle}
+                  className={commonClass}
+                >
+                  <Image src={channel.icon} alt={channel.name} width={iconSize} height={iconSize} className="shrink-0" />
+                  <span className="text-[#E6E6F1] font-medium truncate">{channel.name}</span>
+                </button>
+              );
+            }
+
+            return (
+              <a
+                key={channel.name}
+                href={channel.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={commonStyle}
+                className={commonClass}
+              >
+                <Image src={channel.icon} alt={channel.name} width={iconSize} height={iconSize} className="shrink-0" />
+                <span className="text-[#E6E6F1] font-medium truncate">{channel.name}</span>
+              </a>
+            );
+          })}
+        </div>
+
+        {/* Outer Orbit (60s) */}
+        <div
+          style={{ animation: "outerOrbit 60s linear infinite", transformOrigin: "0 0" }}
+          className="absolute left-1/2 top-1/2"
+        >
+          {outerChannels.map((channel, i) => {
+            const angle = (i / outerChannels.length) * 2 * Math.PI - Math.PI / 2;
+            const x = Math.cos(angle) * outerRadius;
+            const y = Math.sin(angle) * outerRadius;
+
+            return (
+              <a
+                key={channel.name}
+                href={channel.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  width: `${outerW}px`,
+                  height: `${outerH}px`,
+                  left: `calc(50% + ${x}px)`,
+                  top: `calc(50% + ${y}px)`,
+                  transform: "translate(-50%, -50%)",
+                  animation: "counterOrbit 60s linear infinite",
+                }}
+                className={`absolute flex items-center justify-center gap-1.5 sm:gap-2 bg-[#10121B] border border-[#A18AFF] shadow-[0_0_12px_rgba(161,143,255,0.6)] px-2 ${textSize} cursor-pointer hover:scale-105 transition-transform select-none`}
+              >
+                <Image src={channel.icon} alt={channel.name} width={iconSize} height={iconSize} className="shrink-0" />
+                <span className="text-[#E6E6F1] font-medium truncate">{channel.name}</span>
+              </a>
+            );
+          })}
+        </div>
+
+      </div>
+    </section>
+  );
+}

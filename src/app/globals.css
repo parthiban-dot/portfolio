@@ -3,10 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --background: #030508;
-  --foreground: #f0f3fa;
-  --moon-accent: #d4e5ff;
-  --surface-border: rgba(255, 255, 255, 0.06);
+  --background: #03040A;
+  --foreground: #E6E6F1;
+  --secondary: #B0B3C5;
+  --gold: #FFEDC2;
+  --butter: #FFDFAF;
+  --violet: #A18AFF;
+  --card: #10121B;
+  --border: #3F4454;
 }
 
 * {
@@ -19,55 +23,63 @@ html {
 }
 
 body {
-  background-color: #030508;
-  color: #f0f3fa;
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  background-color: #03040A;
+  color: #E6E6F1;
+  font-family: var(--font-sans), Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   overflow-x: hidden;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom Scrollbar - Subdued & Minimal */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #030508;
+  background: #03040A;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #141824;
+  background: #181B26;
   border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #242c3f;
+  background: #3F4454;
 }
 
-/* Text Selection - Restrained Moonlight Tint */
+/* Text Selection */
 ::selection {
-  background: rgba(212, 229, 255, 0.2);
-  color: #ffffff;
+  background: rgba(255, 223, 175, 0.2);
+  color: #FFEDC2;
 }
 
-/* Subtle ambient backdrop grid */
-.bg-night-grid {
-  background-size: 48px 48px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+/* Orbit keyframes */
+@keyframes innerOrbit {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-/* Mobile lightweight transitions */
-@media (max-width: 640px) {
-  .hover\:scale-\[1\.008\], 
-  .hover\:scale-\[1\.01\], 
-  .hover\:scale-\[1\.02\] {
-    transform: none !important;
-  }
+@keyframes outerOrbit {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes counterOrbit {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(-360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: 60s linear infinite spin;
 }
 
 /* Accessibility: Reduced motion support */

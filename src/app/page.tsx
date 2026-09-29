@@ -1,40 +1,39 @@
 "use client";
 
 import React from "react";
-import { Atmosphere } from "@/components/ui/Atmosphere";
-import { CursorGlow } from "@/components/ui/CursorGlow";
 import { Navbar } from "@/components/navigation/Navbar";
 import { HeroSection } from "@/components/hero/HeroSection";
 import { AboutSection } from "@/components/about/AboutSection";
-import { SkillsSection } from "@/components/skills/SkillsSection";
+import { TechStackOrbit } from "@/components/skills/TechStackOrbit";
 import { ProjectsSection } from "@/components/projects/ProjectsSection";
-import { DracarysFeature } from "@/components/dracarys/DracarysFeature";
-import { JourneySection } from "@/components/journey/JourneySection";
-import { ContactSection } from "@/components/contact/ContactSection";
+import { ContactOrbit } from "@/components/contact/ContactOrbit";
 import { Footer } from "@/components/footer/Footer";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-night-950 text-starlight-primary selection:bg-moon-accent/20 selection:text-white overflow-x-hidden">
-      {/* Background Atmosphere: Subtle Zenith Moonlight Mist & Hairline Grid */}
-      <Atmosphere showGrid={true} />
-      <CursorGlow />
-
-      {/* Reusable Minimal Premium Navbar */}
+    <div className="w-full bg-[#03040A] text-[#E6E6F1] overflow-x-hidden min-h-screen">
+      {/* 1. Header / Navbar with Moon Logo */}
       <Navbar />
 
-      {/* Main Landing Experience */}
-      <main className="relative z-10">
+      {/* 2. Main Page Content */}
+      <main className="w-full">
+        {/* Hero Section */}
         <HeroSection />
+
+        {/* About Me Section */}
         <AboutSection />
-        <SkillsSection />
+
+        {/* My Tech Stack in Orbit */}
+        <TechStackOrbit />
+
+        {/* Crafted in the Moonlight Projects */}
         <ProjectsSection />
-        <DracarysFeature />
-        <JourneySection />
-        <ContactSection />
+
+        {/* Reach Me from Earth Contact Orbit */}
+        <ContactOrbit />
       </main>
 
-      {/* Reusable Footer */}
+      {/* 3. Footer */}
       <Footer />
     </div>
   );

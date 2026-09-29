@@ -10,51 +10,66 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        theme: {
+          bg: "#03040A",
+          text: "#E6E6F1",
+          secondary: "#B0B3C5",
+          gold: "#FFEDC2",
+          butter: "#FFDFAF",
+          violet: "#A18AFF",
+          card: "#10121B",
+          border: "#3F4454",
+        },
         night: {
-          950: "#030508", // Primary canvas (deep midnight / near-black)
-          900: "#080B11", // Secondary surface 1
-          850: "#0E121A", // Card surface 2
-          800: "#141824", // Elevated surface 3
-          750: "#1B2130", // Subtle border
-          700: "#242C3F", // Hover border
+          950: "#03040A",
+          900: "#080A12",
+          850: "#10121B",
+          800: "#181B26",
+          750: "#222736",
+          700: "#3F4454",
         },
         surface: {
-          1: "#080B11",
-          2: "#0E121A",
-          3: "#141824",
-          border: "rgba(255, 255, 255, 0.06)",
-          "border-hover": "rgba(212, 229, 255, 0.18)",
+          1: "#080A12",
+          2: "#10121B",
+          3: "#181B26",
+          border: "#3F4454",
+          "border-hover": "#A18AFF",
         },
         starlight: {
-          primary: "#F0F3FA",   // High-contrast off-white
-          secondary: "#9BA4B5", // Muted slate gray
-          muted: "#5C657A",     // Subtle metadata
-          dim: "#3A4254",       // Hairline details
+          primary: "#E6E6F1",
+          secondary: "#B0B3C5",
+          muted: "#81859C",
+          dim: "#4B5066",
         },
         moon: {
-          accent: "#D4E5FF", // Cool moonlight highlight
-          light: "#E8F1FF",  // Crisp moonbeam
-          glow: "rgba(212, 229, 255, 0.08)",
-          border: "rgba(212, 229, 255, 0.14)",
-          active: "#7EAAEB", // Interactive active state
+          accent: "#FFDFAF",
+          gold: "#FFEDC2",
+          violet: "#A18AFF",
+          light: "#FFF6E0",
+          glow: "rgba(255, 237, 194, 0.15)",
+          border: "rgba(255, 237, 194, 0.2)",
         },
       },
       fontFamily: {
-        sans: ["var(--font-sans)", "Inter", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+        sans: ["var(--font-sans)", "Inter", "-apple-system", "sans-serif"],
         mono: ["var(--font-mono)", "JetBrains Mono", "monospace"],
       },
-      boxShadow: {
-        "surface-card": "0 8px 30px -10px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.05)",
-        "surface-hover": "0 12px 35px -8px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(212, 229, 255, 0.16)",
-        "moon-soft": "0 0 30px -5px rgba(212, 229, 255, 0.06)",
-        "moon-button": "0 0 20px -2px rgba(212, 229, 255, 0.15)",
+      animation: {
+        "spin-slow": "spin 60s linear infinite",
       },
-      transitionTimingFunction: {
-        "out-expo": "cubic-bezier(0.16, 1, 0.3, 1)",
-      },
-      transitionDuration: {
-        "400": "400ms",
-        "600": "600ms",
+      keyframes: {
+        innerOrbit: {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
+        outerOrbit: {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
+        counterOrbit: {
+          "0%": { transform: "translate(-50%, -50%) rotate(0deg)" },
+          "100%": { transform: "translate(-50%, -50%) rotate(-360deg)" },
+        },
       },
     },
   },

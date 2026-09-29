@@ -1,295 +1,165 @@
 "use client";
 
 import React, { useState } from "react";
-import { Container } from "@/components/ui/Container";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Reveal } from "@/components/ui/Reveal";
-import { SkillBadge } from "@/components/ui/SkillBadge";
+import { motion, type Variants } from "framer-motion";
 import { ProjectDetailModal } from "./ProjectDetailModal";
-import { VirtualTeacherVisual, DracarysVisual, CollegiateLabVisual } from "./ProjectVisuals";
 import { PORTFOLIO_DATA, Project } from "@/data/portfolioData";
-import { ArrowUpRight, ExternalLink, Code, Sparkles, BookOpen, Layers } from "lucide-react";
-import { GithubIcon } from "@/components/icons/SocialIcons";
+import { VirtualTeacherVisual, DracarysVisual, CollegiateLabVisual } from "./ProjectVisuals";
 
 export function ProjectsSection() {
   const [activeProject, setActiveProject] = useState<Project | null>(null);
 
-  const projects = PORTFOLIO_DATA.projects;
-  const featuredProject = projects[0]; // AI Virtual Teacher
-  const secondaryProjects = projects.slice(1); // DRACARYS & Collegiate Lab
+  const projects = [
+    {
+      data: PORTFOLIO_DATA.projects[0], // AI Virtual Teacher
+      tagline: "An intelligent pedagogical system built with Python, FastAPI, and Next.js.",
+      description: "AI Virtual Teacher understands educational material, personalizes lessons, explains concepts with Socratic analogies, generates diagnostic questions, and adapts teaching based on learner comprehension.",
+      bullets: [
+        <>★ Dynamic concept deconstruction and <strong>Socratic explanation</strong> generation</>,
+        <>★ Automated contextual question synthesis from <strong>syllabus material</strong></>,
+        <>★ Adaptive learner evaluation measuring <strong>comprehension depth</strong> vs surface recall</>,
+        <>★ Real-time pedagogy adjustment that <strong>re-routes learning pathways</strong> upon knowledge gaps</>,
+        <>★ High-performance async backend with <strong>FastAPI and Next.js</strong> frontend</>,
+      ],
+      buttonText: "Case Study & Architecture",
+      action: "modal",
+      visual: <VirtualTeacherVisual />,
+    },
+    {
+      data: PORTFOLIO_DATA.projects[1], // DRACARYS
+      tagline: "Collegiate technology platform and student team founded by Parthiban.",
+      description: "Founded by Parthiban, DRACARYS brings driven engineering students together for competitive hackathons, collaborative project repositories, peer code reviews, and real-world problem solving.",
+      bullets: [
+        <>★ Official collegiate initiative <strong>founded and led by Parthiban</strong></>,
+        <>★ Agile squad formation and sprint delivery for <strong>24–48 hour hackathons</strong></>,
+        <>★ Shared Git repositories, <strong>API contract modeling</strong>, and peer code reviews</>,
+        <>★ Active development of student productivity tools and <strong>community web apps</strong></>,
+        <>★ Deployed live in production on <strong>Vercel</strong> at dracarysweb.vercel.app</>,
+      ],
+      buttonText: "Live Demo",
+      action: "link",
+      url: "https://dracarysweb.vercel.app/",
+      visual: <DracarysVisual />,
+    },
+    {
+      data: PORTFOLIO_DATA.projects[2], // Exploratory Lab Builds
+      tagline: "Experimental prototypes, C++ algorithms, and autonomous agent workflows.",
+      description: "A continuous development sandbox exploring autonomous agent architectures, local LLM evaluation benchmarks, C++ algorithmic systems, and rapid MVPs being readied for upcoming collegiate hackathons.",
+      bullets: [
+        <>★ Algorithmic optimization benchmarks in <strong>C++ and Python</strong></>,
+        <>★ Multi-agent tool execution workflows and <strong>deterministic routing</strong></>,
+        <>★ Sprint templates configured for <strong>rapid hackathon velocity</strong></>,
+        <>★ Structured relational database schemas and <strong>API interfaces</strong></>,
+        <>★ Continuous codebase updates on <strong>GitHub</strong></>,
+      ],
+      buttonText: "GitHub Profile",
+      action: "link",
+      url: "https://github.com/parthiban-dot",
+      visual: <CollegiateLabVisual />,
+    },
+  ];
+
+  const cardVariants: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
 
   return (
-    <section id="projects" className="py-24 sm:py-32 relative border-t border-surface-border">
-      <Container size="wide">
-        {/* Header */}
-        <Reveal type="fade-up">
-          <SectionHeading
-            tag="Selected Works"
-            tagIcon={<Code className="w-3.5 h-3.5" />}
-            title="Projects &amp; Architectures"
-            description="Real software, pedagogical AI concepts, and collaborative platforms built for actual learners and student teams. Honest specifications with zero invented metrics."
-          />
-        </Reveal>
+    <div id="projects" className="relative w-full px-5 sm:px-6 md:px-12 xl:px-24 mt-[120px] mb-24">
+      {/* Header */}
+      <motion.div
+        className="text-center"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={cardVariants}
+      >
+        <h2 className="text-[28px] sm:text-[32px] md:text-[36px] font-semibold leading-[38px] sm:leading-[40px] md:leading-[45px] tracking-[-0.02em] text-[#E6E6F1]">
+          <span>Crafted in the Moonlight</span>
+        </h2>
+        <p className="mt-4 text-[14px] sm:text-[15px] md:text-[16px] leading-[22px] sm:leading-[24px] text-[#FFDFAF] mx-auto px-2 max-w-2xl">
+          <span>Three projects that showcase my dedication, creativity, and late-night focus — built to be both functional and beautiful.</span>
+        </p>
+      </motion.div>
 
-        {/* ================================================== */}
-        {/* 1. LARGE FEATURED PROJECT CARD (Desktop: Full Width Banner) */}
-        {/* ================================================== */}
-        <div className="mb-8">
-          <Reveal type="scale-in" delay={0.1}>
-            <article className="group rounded-2xl bg-night-900/70 border border-surface-border hover:border-moon-border transition-all duration-400 ease-out-expo p-6 sm:p-9 shadow-surface-card hover:shadow-surface-hover hover:scale-[1.008] backdrop-blur-md relative overflow-hidden">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                {/* Left: Project Details & Copy */}
-                <div className="lg:col-span-7 flex flex-col justify-between h-full">
-                  <div>
-                    {/* Category & Status */}
-                    <div className="flex items-center gap-2 mb-3">
-                      <span className="text-xs font-mono px-2.5 py-0.5 rounded-full bg-night-850 border border-surface-border text-moon-accent">
-                        {featuredProject.category}
-                      </span>
-                      <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-sky-950/20 text-moon-accent border border-moon-border">
-                        Featured • {featuredProject.status}
-                      </span>
-                    </div>
-
-                    {/* Title */}
-                    <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-starlight-primary group-hover:text-moon-light transition-colors duration-200">
-                      {featuredProject.title}
-                    </h3>
-
-                    {/* Tagline */}
-                    <p className="mt-1.5 text-xs sm:text-sm font-medium text-moon-accent">
-                      {featuredProject.tagline}
-                    </p>
-
-                    {/* Description */}
-                    <p className="mt-3.5 text-sm sm:text-base text-starlight-secondary font-normal leading-relaxed">
-                      {featuredProject.description}
-                    </p>
-
-                    {/* Key Technical Highlights */}
-                    <div className="mt-5 space-y-2 border-t border-surface-border/60 pt-4">
-                      {featuredProject.highlights.slice(0, 3).map((item, idx) => (
-                        <div key={idx} className="flex items-start gap-2 text-xs sm:text-sm text-starlight-secondary">
-                          <span className="text-moon-accent font-mono text-xs">›</span>
-                          <span>{item}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Bottom: Tech Stack Chips & Action Triggers */}
-                  <div className="mt-6 pt-5 border-t border-surface-border/60 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <div className="flex flex-wrap gap-1.5">
-                      {featuredProject.techStack.map((tech) => (
-                        <SkillBadge key={tech} name={tech} size="sm" variant="default" />
-                      ))}
-                    </div>
-
-                    <div className="flex items-center gap-3">
-                      {featuredProject.githubUrl && (
-                        <a
-                          href={featuredProject.githubUrl}
-                          target="_blank"
-                          rel="noreferrer noopener"
-                          className="inline-flex items-center gap-1.5 text-xs font-mono text-starlight-muted hover:text-starlight-primary transition-colors p-1.5"
-                          aria-label={`View ${featuredProject.title} source code on GitHub`}
-                        >
-                          <GithubIcon className="w-4 h-4" />
-                          <span className="hidden sm:inline">Source</span>
-                        </a>
-                      )}
-
-                      {/* No fake live link: Shows Case Study button */}
-                      <button
-                        onClick={() => setActiveProject(featuredProject)}
-                        className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-night-850 hover:bg-night-800 border border-surface-border hover:border-moon-border text-moon-light text-xs font-mono font-medium transition-all group-hover:shadow-moon-soft active:scale-95"
-                      >
-                        <span>Case Study &amp; Architecture</span>
-                        <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Right: Dedicated Visual Illustration */}
-                <div className="lg:col-span-5 w-full">
-                  <div className="transform group-hover:scale-[1.02] transition-transform duration-400 ease-out-expo">
-                    <VirtualTeacherVisual />
-                  </div>
-                </div>
+      {/* Project Cards */}
+      <div className="space-y-[80px]">
+        {projects.map((proj, idx) => (
+          <motion.div
+            key={proj.data.title}
+            className="group mt-[80px] w-full max-w-[1300px] mx-auto bg-[#10121B] border border-[#3F4454] shadow-[0px_4px_12px_rgba(255,255,255,0.06)] flex flex-col lg:flex-row overflow-hidden transition-all duration-300 hover:ring-2 hover:ring-[#A18AFF] hover:shadow-[0px_0px_12px_rgba(161,138,255,0.6)]"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={cardVariants}
+          >
+            {/* Left: Visual / Illustration Container */}
+            <div className="w-full lg:w-[500px] xl:w-[525px] h-[260px] sm:h-[300px] lg:h-[480px] relative p-4 lg:p-6 flex justify-center items-center bg-[#070911] border-b lg:border-b-0 lg:border-r border-[#3F4454]/60">
+              <div className="w-full max-w-md transform group-hover:scale-[1.02] transition-transform duration-300">
+                {proj.visual}
               </div>
-            </article>
-          </Reveal>
-        </div>
+            </div>
 
-        {/* ================================================== */}
-        {/* 2. SECONDARY PROJECTS (Sophisticated Asymmetric Grid) */}
-        {/* ================================================== */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-          {/* DRACARYS Card */}
-          <Reveal type="fade-up" delay={0.15}>
-            <article className="group rounded-2xl bg-night-900/60 border border-surface-border hover:border-moon-border transition-all duration-400 ease-out-expo p-6 sm:p-7 shadow-surface-card hover:shadow-surface-hover hover:scale-[1.01] backdrop-blur-sm flex flex-col justify-between h-full overflow-hidden">
+            {/* Right: Content Area */}
+            <div className="flex-1 px-5 sm:px-8 md:px-10 py-6 flex flex-col justify-between">
               <div>
-                {/* Visual Preview */}
-                <div className="mb-5 transform group-hover:scale-[1.02] transition-transform duration-400 ease-out-expo">
-                  <DracarysVisual />
+                <div className="flex flex-col items-center">
+                  <h3 className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] font-bold text-[#E6E6F1] leading-[30px] sm:leading-[32px] md:leading-[34px] lg:leading-[36px] text-center">
+                    {proj.data.title}
+                  </h3>
+                  <p className="italic text-[#FFDFAF] mt-2 sm:mt-3 text-[14px] sm:text-[15px] md:text-[16px] leading-[22px] sm:leading-[24px] text-center max-w-lg">
+                    {proj.tagline}
+                  </p>
                 </div>
 
-                {/* Header */}
-                <div className="flex items-center justify-between gap-2 mb-2">
-                  <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-night-850 border border-surface-border text-moon-accent">
-                    {secondaryProjects[0].category}
-                  </span>
-                  <span className="text-[11px] font-mono text-starlight-muted">
-                    {secondaryProjects[0].status}
-                  </span>
+                <div className="mt-5">
+                  <p className="text-[#B0B3C5] text-[14px] sm:text-[15px] md:text-[16px] leading-[22px] sm:leading-[24px]">
+                    {proj.description}
+                  </p>
+
+                  <ul className="mt-4 pl-5 space-y-2 lg:space-y-3 text-[#B0B3C5] text-[14px] sm:text-[15px] md:text-[16px] leading-[22px] sm:leading-[24px] list-none">
+                    {proj.bullets.map((b, i) => (
+                      <li key={i}>{b}</li>
+                    ))}
+                  </ul>
                 </div>
-
-                <h3 className="text-xl font-bold tracking-tight text-starlight-primary group-hover:text-moon-light transition-colors">
-                  {secondaryProjects[0].title}
-                </h3>
-
-                <p className="mt-1 text-xs sm:text-sm font-medium text-moon-accent">
-                  {secondaryProjects[0].tagline}
-                </p>
-
-                <p className="mt-3 text-xs sm:text-sm text-starlight-secondary font-normal leading-relaxed line-clamp-3">
-                  {secondaryProjects[0].description}
-                </p>
               </div>
 
-              {/* Bottom Actions */}
-              <div className="mt-6 pt-4 border-t border-surface-border/60">
-                <div className="flex flex-wrap gap-1.5 mb-4">
-                  {secondaryProjects[0].techStack.slice(0, 4).map((tech) => (
-                    <SkillBadge key={tech} name={tech} size="sm" variant="default" />
-                  ))}
-                  {secondaryProjects[0].techStack.length > 4 && (
-                    <span className="text-[11px] font-mono text-starlight-muted self-center px-1">
-                      +{secondaryProjects[0].techStack.length - 4}
-                    </span>
-                  )}
-                </div>
-
-                <div className="flex items-center justify-between">
+              {/* Action Button */}
+              <div className="flex justify-center mt-6 pt-4 border-t border-[#3F4454]/40">
+                {proj.action === "modal" ? (
                   <button
-                    onClick={() => setActiveProject(secondaryProjects[0])}
-                    className="inline-flex items-center gap-1.5 text-xs font-mono text-moon-accent hover:text-moon-light font-medium focus:outline-none"
+                    onClick={() => setActiveProject(proj.data)}
+                    className="px-8 py-2.5 bg-[#FFDFAF] text-[#03040A] font-medium text-[14px] sm:text-[15px] md:text-[16px] tracking-[0.05em] hover:bg-[#FFEDC2] transition-colors duration-300 cursor-pointer shadow-sm active:scale-95"
                   >
-                    <span>Case Study</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    {proj.buttonText}
                   </button>
-
-                  {secondaryProjects[0].githubUrl && (
-                    <a
-                      href={secondaryProjects[0].githubUrl}
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      className="p-1.5 rounded-md text-starlight-muted hover:text-starlight-primary hover:bg-night-850 transition-colors"
-                      aria-label="View DRACARYS on GitHub"
-                    >
-                      <GithubIcon className="w-4 h-4" />
-                    </a>
-                  )}
-                </div>
-              </div>
-            </article>
-          </Reveal>
-
-          {/* Collegiate Lab Builds Card */}
-          <Reveal type="fade-up" delay={0.2}>
-            <article className="group rounded-2xl bg-night-900/60 border border-surface-border hover:border-moon-border transition-all duration-400 ease-out-expo p-6 sm:p-7 shadow-surface-card hover:shadow-surface-hover hover:scale-[1.01] backdrop-blur-sm flex flex-col justify-between h-full overflow-hidden">
-              <div>
-                {/* Visual Preview */}
-                <div className="mb-5 transform group-hover:scale-[1.02] transition-transform duration-400 ease-out-expo">
-                  <CollegiateLabVisual />
-                </div>
-
-                {/* Header */}
-                <div className="flex items-center justify-between gap-2 mb-2">
-                  <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-night-850 border border-surface-border text-starlight-secondary">
-                    {secondaryProjects[1].category}
-                  </span>
-                  <span className="text-[11px] font-mono text-starlight-muted">
-                    {secondaryProjects[1].status}
-                  </span>
-                </div>
-
-                <h3 className="text-xl font-bold tracking-tight text-starlight-primary group-hover:text-moon-light transition-colors">
-                  {secondaryProjects[1].title}
-                </h3>
-
-                <p className="mt-1 text-xs sm:text-sm font-medium text-starlight-secondary">
-                  {secondaryProjects[1].tagline}
-                </p>
-
-                <p className="mt-3 text-xs sm:text-sm text-starlight-secondary font-normal leading-relaxed line-clamp-3">
-                  {secondaryProjects[1].description}
-                </p>
-              </div>
-
-              {/* Bottom Actions */}
-              <div className="mt-6 pt-4 border-t border-surface-border/60">
-                <div className="flex flex-wrap gap-1.5 mb-4">
-                  {secondaryProjects[1].techStack.slice(0, 4).map((tech) => (
-                    <SkillBadge key={tech} name={tech} size="sm" variant="default" />
-                  ))}
-                  {secondaryProjects[1].techStack.length > 4 && (
-                    <span className="text-[11px] font-mono text-starlight-muted self-center px-1">
-                      +{secondaryProjects[1].techStack.length - 4}
-                    </span>
-                  )}
-                </div>
-
-                <div className="flex items-center justify-between">
-                  <button
-                    onClick={() => setActiveProject(secondaryProjects[1])}
-                    className="inline-flex items-center gap-1.5 text-xs font-mono text-starlight-secondary hover:text-moon-light font-medium focus:outline-none"
+                ) : (
+                  <a
+                    href={proj.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    <span>Lab Notes</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                  </button>
-
-                  {secondaryProjects[1].githubUrl && (
-                    <a
-                      href={secondaryProjects[1].githubUrl}
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      className="p-1.5 rounded-md text-starlight-muted hover:text-starlight-primary hover:bg-night-850 transition-colors"
-                      aria-label="View Lab builds on GitHub"
-                    >
-                      <GithubIcon className="w-4 h-4" />
-                    </a>
-                  )}
-                </div>
+                    <button className="px-8 py-2.5 bg-[#FFDFAF] text-[#03040A] font-medium text-[14px] sm:text-[15px] md:text-[16px] tracking-[0.05em] hover:bg-[#FFEDC2] transition-colors duration-300 cursor-pointer shadow-sm active:scale-95">
+                      {proj.buttonText}
+                    </button>
+                  </a>
+                )}
               </div>
-            </article>
-          </Reveal>
-        </div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
 
-        {/* View All Projects Path */}
-        <Reveal type="fade-up" delay={0.25}>
-          <div className="mt-12 pt-8 border-t border-surface-border/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-starlight-muted">
-            <span>More collegiate &amp; open-source projects in active development.</span>
-            <a
-              href="https://github.com/parthiban-dot?tab=repositories"
-              target="_blank"
-              rel="noreferrer noopener"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-night-900 border border-surface-border hover:border-moon-border text-moon-light hover:text-white transition-colors group shadow-sm"
-            >
-              <GithubIcon className="w-3.5 h-3.5" />
-              <span>View All Repositories on GitHub</span>
-              <ArrowUpRight className="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </a>
-          </div>
-        </Reveal>
-
-        {/* Deep Dive Case Study Modal */}
-        <ProjectDetailModal
-          project={activeProject}
-          onClose={() => setActiveProject(null)}
-        />
-      </Container>
-    </section>
+      {/* Case Study Modal */}
+      <ProjectDetailModal
+        project={activeProject}
+        onClose={() => setActiveProject(null)}
+      />
+    </div>
   );
 }
