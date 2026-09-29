@@ -75,5 +75,7 @@ npm start
 
 **Parthiban V**  
 - GitHub: [@parthiban-dot](https://github.com/parthiban-dot)  
+- LinkedIn: [Parthiban V](https://www.linkedin.com/in/parthi-xii-581493376?utm_source=share_via&utm_content=profile&utm_medium=member_android)  
+- Instagram: [@its_.prince._here](https://www.instagram.com/its_.prince._here?stkn=MXBld3RqdGVjZ3pnMw==)  
 - Email: [contact.parthiban.v@gmail.com](mailto:contact.parthiban.v@gmail.com)  
-- College: Sri Shakthi Institute of Engineering and Technology (2nd Year B.E. CSE)
+- Institution: Sri Shakthi Institute of Engineering and Technology (2nd Year B.E. CSE)

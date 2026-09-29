@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { Mail, Copy, Check, Sparkles, ArrowUpRight } from "lucide-react";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
-import { GithubIcon, LinkedinIcon, XTwitterIcon } from "@/components/icons/SocialIcons";
+import { GithubIcon, LinkedinIcon, InstagramIcon } from "@/components/icons/SocialIcons";
 
 export function ContactSection() {
   const [copied, setCopied] = useState(false);
@@ -100,13 +100,13 @@ export function ContactSection() {
               </a>
 
               <a
-                href={PORTFOLIO_DATA.personal.socialLinks.twitter}
+                href={PORTFOLIO_DATA.personal.socialLinks.instagram}
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center gap-2 px-4 py-2 rounded-lg bg-night-850/60 border border-night-750 text-starlight-secondary hover:text-starlight-primary hover:border-night-600 transition-colors text-xs font-mono"
               >
-                <XTwitterIcon className="w-4 h-4" />
-                <span>Twitter / X</span>
+                <InstagramIcon className="w-4 h-4" />
+                <span>Instagram</span>
                 <ArrowUpRight className="w-3 h-3 text-starlight-muted" />
               </a>
             </div>

@@ -55,8 +55,8 @@ export const PORTFOLIO_DATA = {
     socialLinks: {
       github: "https://github.com/parthiban-dot",
       repo: "https://github.com/parthiban-dot/portfolio",
-      linkedin: "https://linkedin.com",
-      twitter: "https://twitter.com",
+      linkedin: "https://www.linkedin.com/in/parthi-xii-581493376?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+      instagram: "https://www.instagram.com/its_.prince._here?stkn=MXBld3RqdGVjZ3pnMw==",
       email: "contact.parthiban.v@gmail.com",
     },
   },
