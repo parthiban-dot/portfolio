@@ -16,7 +16,7 @@ export function SkillsSection() {
   const currentCategory = PORTFOLIO_DATA.skillCategories[activeTab];
 
   return (
-    <section id="arsenal" className="py-24 px-4 sm:px-6 lg:px-8 relative border-t border-night-800/80">
+    <section id="skills" className="py-24 px-4 sm:px-6 lg:px-8 relative border-t border-surface-border">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex flex-col items-start max-w-2xl mb-12">

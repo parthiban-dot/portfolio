@@ -1,107 +1,155 @@
 "use client";
 
 import React from "react";
-import { ArrowDown, ArrowUpRight, Cpu, Layers, Sparkles, Terminal, ShieldCheck, Zap } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowDown, Mail, ArrowUpRight, Sparkles } from "lucide-react";
+import { Container } from "@/components/ui/Container";
+import { Button } from "@/components/ui/Button";
+import { GithubIcon, LinkedinIcon } from "@/components/icons/SocialIcons";
+import { EngineeringVisual } from "./EngineeringVisual";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
 
 export function HeroSection() {
+  const shouldReduceMotion = useReducedMotion();
+
+  // Animation delay sequencing (Fast, crisp, total sequence under 700ms)
+  const anim = (delay: number) => {
+    if (shouldReduceMotion) return {};
+    return {
+      initial: { opacity: 0, y: 16 },
+      animate: { opacity: 1, y: 0 },
+      transition: {
+        duration: 0.45,
+        delay,
+        ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
+      },
+    };
+  };
+
+  const socialLinks = [
+    {
+      label: "LinkedIn",
+      href: PORTFOLIO_DATA.personal.socialLinks.linkedin,
+      icon: <LinkedinIcon className="w-3.5 h-3.5" />,
+    },
+    {
+      label: "GitHub",
+      href: PORTFOLIO_DATA.personal.socialLinks.github,
+      icon: <GithubIcon className="w-3.5 h-3.5" />,
+    },
+    {
+      label: "Email",
+      href: `mailto:${PORTFOLIO_DATA.personal.socialLinks.email}`,
+      icon: <Mail className="w-3.5 h-3.5" />,
+    },
+  ];
+
   return (
-    <section className="relative min-h-[92vh] flex items-center justify-center pt-28 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      {/* Subtle Moon Crescent Aura Motif */}
-      <div 
-        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] h-[340px] sm:w-[460px] sm:h-[460px] rounded-full pointer-events-none opacity-20 -z-10"
-        style={{
-          boxShadow: "inset -18px 0px 40px rgba(255, 237, 194, 0.4), 0 0 80px rgba(161, 138, 255, 0.08)",
-          border: "1px solid rgba(255, 237, 194, 0.08)"
-        }}
-        aria-hidden="true"
-      />
+    <section className="relative min-h-[90vh] flex items-center pt-28 sm:pt-32 pb-16 sm:pb-24 overflow-hidden">
+      <Container size="wide">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          {/* ================================================== */}
+          {/* LEFT: TEXT, POSITIONING, CTAs & SOCIALS */}
+          {/* ================================================== */}
+          <div className="lg:col-span-7 flex flex-col items-start text-left">
+            {/* Step 2: Small label fades in */}
+            <motion.div {...anim(0.1)}>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-night-900 border border-surface-border text-xs font-mono text-starlight-secondary mb-6 backdrop-blur-sm shadow-sm">
+                <span className="w-1.5 h-1.5 rounded-full bg-moon-accent animate-pulse" />
+                <span>Sri Shakthi Institute of Engineering &amp; Technology</span>
+                <span className="text-starlight-dim">•</span>
+                <span className="text-moon-accent">2nd Year CSE</span>
+              </div>
+            </motion.div>
 
-      <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
-        {/* Academic & Builder Tag */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-night-900/90 border border-night-700/80 text-xs font-mono text-starlight-secondary mb-6 backdrop-blur-md shadow-sm hover:border-moon-amber/40 transition-colors">
-          <span className="w-1.5 h-1.5 rounded-full bg-moon-amber animate-pulse"></span>
-          <span>{PORTFOLIO_DATA.personal.education.institution}</span>
-          <span className="text-night-600">•</span>
-          <span className="text-moon-light font-medium">CSE 2nd Year</span>
+            {/* Step 3: Main message heading reveals */}
+            <motion.h1
+              {...anim(0.2)}
+              className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-starlight-primary leading-[1.1] mb-4"
+            >
+              Hey, I&apos;m{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-starlight-primary via-moon-light to-moon-accent">
+                Parthiban.
+              </span>
+            </motion.h1>
+
+            {/* Step 4: Supporting positioning */}
+            <motion.div {...anim(0.3)}>
+              <p className="text-sm sm:text-base md:text-lg font-mono text-moon-accent tracking-tight mb-4">
+                AI Engineering • Full-Stack Development • Hackathon Enthusiast
+              </p>
+            </motion.div>
+
+            {/* Step 4 (cont): Strong short introduction */}
+            <motion.p
+              {...anim(0.38)}
+              className="text-base sm:text-lg text-starlight-secondary font-normal leading-relaxed max-w-2xl mb-8"
+            >
+              I&apos;m a Computer Science and Engineering student focused on building intelligent systems, useful products, and real-world solutions.
+            </motion.p>
+
+            {/* Step 5: CTA buttons */}
+            <motion.div
+              {...anim(0.48)}
+              className="flex flex-wrap items-center gap-3 sm:gap-4 mb-10 w-full sm:w-auto"
+            >
+              <Button
+                href="#projects"
+                variant="primary"
+                size="md"
+                rightIcon={<ArrowDown className="w-4 h-4" />}
+                className="w-full sm:w-auto"
+              >
+                View My Work
+              </Button>
+
+              <Button
+                href="#contact"
+                variant="secondary"
+                size="md"
+                rightIcon={<ArrowUpRight className="w-4 h-4 text-starlight-muted" />}
+                className="w-full sm:w-auto"
+              >
+                Let&apos;s Connect
+              </Button>
+            </motion.div>
+
+            {/* Step 5 (cont): Actual Social Links */}
+            <motion.div
+              {...anim(0.55)}
+              className="pt-6 border-t border-surface-border/60 w-full flex flex-wrap items-center gap-4 text-xs font-mono text-starlight-muted"
+            >
+              <span className="text-starlight-dim">Channels:</span>
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="group inline-flex items-center gap-1.5 text-starlight-secondary hover:text-moon-light transition-colors duration-200"
+                >
+                  <span className="group-hover:text-moon-accent transition-colors">
+                    {social.icon}
+                  </span>
+                  <span>{social.label}</span>
+                </a>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* ================================================== */}
+          {/* RIGHT: HERO VISUAL (Step 6 subtly animates) */}
+          {/* ================================================== */}
+          <div className="lg:col-span-5 w-full">
+            <motion.div
+              {...anim(0.5)}
+              className="w-full flex items-center justify-center lg:justify-end"
+            >
+              <EngineeringVisual />
+            </motion.div>
+          </div>
         </div>
-
-        {/* Main Headline */}
-        <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-starlight-primary leading-[1.15] max-w-3xl">
-          Architecting{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-moon-light via-moon-amber to-starlight-primary">
-            Autonomous AI Agents
-          </span>{" "}
-          &amp; Resilient Web Systems.
-        </h1>
-
-        {/* Core Subtitle & Storytelling */}
-        <p className="mt-6 text-base sm:text-lg md:text-xl text-starlight-secondary max-w-2xl font-normal leading-relaxed">
-          I’m <span className="text-starlight-primary font-semibold">{PORTFOLIO_DATA.personal.name}</span> — an AI Engineering-focused student, full-stack developer, and freelance builder. Turning complex problem domains into verifiable software, from autonomous agent runtimes to high-velocity hackathon MVPs.
-        </p>
-
-        {/* CTAs */}
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-          <a
-            href="#projects"
-            className="px-6 py-3 rounded-lg bg-moon-light text-night-950 font-medium text-sm tracking-wide hover:bg-moon-glow transition-all duration-200 shadow-[0_0_20px_rgba(255,237,194,0.15)] flex items-center gap-2 active:scale-95"
-          >
-            <span>Explore Engineering Work</span>
-            <ArrowDown className="w-4 h-4" />
-          </a>
-
-          <a
-            href="#console"
-            className="px-6 py-3 rounded-lg bg-night-850 hover:bg-night-800 text-starlight-primary border border-night-700 hover:border-night-600 font-medium text-sm tracking-wide transition-all duration-200 flex items-center gap-2 active:scale-95 group"
-          >
-            <Terminal className="w-4 h-4 text-moon-amber group-hover:rotate-6 transition-transform" />
-            <span>Launch Agent Console</span>
-          </a>
-
-          <a
-            href="#contact"
-            className="px-4 py-3 text-sm text-starlight-secondary hover:text-moon-light font-medium transition-colors flex items-center gap-1.5"
-          >
-            <span>Hire / Collaborate</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
-          </a>
-        </div>
-
-        {/* Key Signals / Spec Badges */}
-        <div className="mt-14 w-full grid grid-cols-2 md:grid-cols-4 gap-3 text-left">
-          <div className="p-3.5 rounded-lg bg-night-900/60 border border-night-750/70 backdrop-blur-sm">
-            <div className="flex items-center gap-2 text-moon-amber mb-1">
-              <Cpu className="w-4 h-4" />
-              <span className="text-[11px] font-mono uppercase tracking-wider text-starlight-muted">Core Focus</span>
-            </div>
-            <p className="text-xs font-semibold text-starlight-primary">AI Agents &amp; LLM Runtimes</p>
-          </div>
-
-          <div className="p-3.5 rounded-lg bg-night-900/60 border border-night-750/70 backdrop-blur-sm">
-            <div className="flex items-center gap-2 text-violet-glow mb-1">
-              <Layers className="w-4 h-4" />
-              <span className="text-[11px] font-mono uppercase tracking-wider text-starlight-muted">Full-Stack</span>
-            </div>
-            <p className="text-xs font-semibold text-starlight-primary">Next.js 15, TypeScript, Python</p>
-          </div>
-
-          <div className="p-3.5 rounded-lg bg-night-900/60 border border-night-750/70 backdrop-blur-sm">
-            <div className="flex items-center gap-2 text-cyanic-accent mb-1">
-              <Zap className="w-4 h-4" />
-              <span className="text-[11px] font-mono uppercase tracking-wider text-starlight-muted">Velocity</span>
-            </div>
-            <p className="text-xs font-semibold text-starlight-primary">Hackathons &amp; Rapid Sprints</p>
-          </div>
-
-          <div className="p-3.5 rounded-lg bg-night-900/60 border border-night-750/70 backdrop-blur-sm">
-            <div className="flex items-center gap-2 text-emerald-400 mb-1">
-              <ShieldCheck className="w-4 h-4" />
-              <span className="text-[11px] font-mono uppercase tracking-wider text-starlight-muted">Engagement</span>
-            </div>
-            <p className="text-xs font-semibold text-starlight-primary">Freelance &amp; Engineering</p>
-          </div>
-        </div>
-      </div>
+      </Container>
     </section>
   );
 }
