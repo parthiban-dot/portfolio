@@ -119,13 +119,13 @@ export function AboutSection() {
 
                 <div className="space-y-3.5 text-sm sm:text-base text-starlight-secondary leading-relaxed font-normal">
                   <p>
-                    I am a 2nd year Computer Science student currently channeling my core energy into <span className="text-starlight-primary font-medium">AI Engineering</span>. Rather than viewing machine learning as purely abstract formulas, I look at it through the lens of a systems builder: how do we create autonomous agents that can reason through multi-step plans, call deterministic APIs safely, and produce verifiable outcomes?
+                    I am a 2nd year Computer Science student focusing my efforts on <span className="text-starlight-primary font-medium">AI Engineering and Full-Stack Development</span>. Rather than treating programming as abstract classroom exercises, I learn best by building real software — experimenting with Python, FastAPI, React, Next.js, and integrating intelligent APIs into functional tools.
                   </p>
                   <p>
-                    My experience bridges modern full-stack web architecture with machine learning runtimes. I enjoy taking an idea from a blank terminal to a deployed, interactive tool — obsessing over clean interfaces, sub-second latency, and intuitive developer experience.
+                    I enjoy taking an idea from an empty repository to a working product, paying close attention to clean code structure, sensible system design, and fast user interfaces.
                   </p>
                   <p>
-                    Hackathons have been my favorite proving ground. The intensity of 24 to 48-hour sprints forces rapid problem scoping, tight team synchronization, and shipping solutions that address real human needs under pressure.
+                    Hackathons have been my favorite proving ground. The intensity of 24 to 48-hour sprints forces quick problem scoping, tight team collaboration, and shipping software that works under pressure.
                   </p>
                 </div>
 

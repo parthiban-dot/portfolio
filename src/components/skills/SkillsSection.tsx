@@ -42,10 +42,10 @@ export function SkillsSection() {
         {/* Header */}
         <Reveal type="fade-up">
           <SectionHeading
-            tag="Engineering Matrix"
+            tag="Technical Stack"
             tagIcon={<Terminal className="w-3.5 h-3.5" />}
             title="The Technology Arsenal"
-            description="A unified, interconnected technical stack spanning foundational computer science, modern full-stack web architecture, and autonomous AI systems."
+            description="Technologies and tools I work with across computer science fundamentals, full-stack web development, and AI engineering."
           />
         </Reveal>
 
@@ -82,13 +82,10 @@ export function SkillsSection() {
                 })}
               </div>
 
-              {/* Live Telemetry Ping */}
+              {/* Status Hint */}
               <div className="flex items-center gap-2 text-xs font-mono text-starlight-muted self-end md:self-auto shrink-0">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-moon-accent opacity-60"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-moon-accent"></span>
-                </span>
-                <span className="hidden sm:inline">SELECT NODE TO INSPECT</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-moon-accent" />
+                <span className="hidden sm:inline">SELECT ANY ITEM FOR DETAILS</span>
               </div>
             </div>
 
@@ -140,14 +137,14 @@ export function SkillsSection() {
                 </div>
               </div>
 
-              {/* Right: Real-Time HUD Telemetry Inspector */}
+              {/* Right: Technology Overview Panel */}
               <div className="lg:col-span-5 p-6 sm:p-8 bg-night-950/50 flex flex-col justify-between">
                 <div>
-                  {/* HUD Header */}
+                  {/* Panel Header */}
                   <div className="flex items-center justify-between pb-3 mb-5 border-b border-surface-border/70">
                     <span className="text-xs font-mono text-starlight-muted uppercase tracking-wider flex items-center gap-1.5">
                       <Radio className="w-3.5 h-3.5 text-moon-accent" />
-                      <span>Telemetry Inspector</span>
+                      <span>Overview</span>
                     </span>
 
                     <span
@@ -177,24 +174,24 @@ export function SkillsSection() {
                   <div className="space-y-4 text-xs sm:text-sm text-starlight-secondary leading-relaxed">
                     <div className="p-3.5 rounded-xl bg-night-900 border border-surface-border">
                       <span className="text-[11px] font-mono text-starlight-muted uppercase block mb-1">
-                        Functional Role:
+                        What I use it for:
                       </span>
                       <p>{activeTech.description}</p>
                     </div>
 
                     <div className="p-3.5 rounded-xl bg-night-900 border border-surface-border">
                       <span className="text-[11px] font-mono text-starlight-muted uppercase block mb-1">
-                        Applied Context:
+                        Where it is used:
                       </span>
                       <p>{activeTech.application}</p>
                     </div>
                   </div>
                 </div>
 
-                {/* Honest Engineering Disclaimer (No Fake Percentages) */}
+                {/* Honest Note */}
                 <div className="mt-8 pt-4 border-t border-surface-border/60 flex items-center justify-between text-[11px] font-mono text-starlight-dim">
-                  <span>Authentic Competency</span>
-                  <span>Zero Fake %</span>
+                  <span>Applied In Real Projects</span>
+                  <span>Practical Competency</span>
                 </div>
               </div>
             </div>

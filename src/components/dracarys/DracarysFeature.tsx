@@ -94,8 +94,8 @@ export const DracarysFeature: React.FC = () => {
               </div>
 
               <div className="flex items-center gap-2 text-xs font-mono text-starlight-muted">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-                <span>ACTIVE COLLABORATIVE GUILD</span>
+                <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                <span>STUDENT TECH COLLECTIVE</span>
               </div>
             </div>
 
@@ -107,9 +107,6 @@ export const DracarysFeature: React.FC = () => {
                   <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white font-mono">
                     DRACARYS
                   </h2>
-                  <span className="text-xs font-mono text-red-400/80 px-2 py-0.5 rounded bg-red-950/60 border border-red-900/40 uppercase">
-                    v1.0
-                  </span>
                 </div>
 
                 {/* Official Tagline */}
@@ -119,14 +116,14 @@ export const DracarysFeature: React.FC = () => {
 
                 {/* Purpose & Personal Narrative */}
                 <p className="text-sm sm:text-base text-starlight-muted leading-relaxed max-w-2xl">
-                  Founded by <strong className="text-white font-semibold">Parthiban</strong>, DRACARYS was created to transcend solo coding and bring driven engineering students together under one collaborative banner. The squad unites to tackle high-stakes hackathons, build production-grade web applications, and experiment with cutting-edge AI technologies in an intense, supportive environment.
+                  Founded by <strong className="text-white font-semibold">Parthiban</strong>, DRACARYS brings driven engineering students together under one collaborative banner. The team collaborates to tackle hackathons, build web applications, and experiment with emerging software technologies.
                 </p>
               </div>
 
-              {/* Founder & Status Telemetry Card */}
+              {/* Founder & Status Profile Card */}
               <div className="lg:col-span-4 rounded-xl border border-white/[0.08] bg-surface-2/70 p-5 space-y-3.5 text-xs font-mono">
                 <div className="text-[11px] uppercase tracking-wider text-starlight-muted pb-2 border-b border-white/[0.06] flex items-center justify-between">
-                  <span>Team Telemetry</span>
+                  <span>Team Profile</span>
                   <Terminal className="w-3.5 h-3.5 text-moon-accent" />
                 </div>
                 
