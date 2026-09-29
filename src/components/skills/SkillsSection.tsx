@@ -1,101 +1,206 @@
 "use client";
 
 import React, { useState } from "react";
-import { Cpu, Terminal, Layers, ShieldCheck, Check, Sparkles } from "lucide-react";
-import { PORTFOLIO_DATA } from "@/data/portfolioData";
+import { Container } from "@/components/ui/Container";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Reveal } from "@/components/ui/Reveal";
+import {
+  Terminal,
+  Cpu,
+  Layers,
+  Sparkles,
+  ShieldCheck,
+  Code2,
+  Workflow,
+  Radio,
+  ArrowRight,
+} from "lucide-react";
+import { ARSENAL_TECHNOLOGIES, TechnologyItem } from "@/data/arsenalData";
 
 export function SkillsSection() {
-  const [activeTab, setActiveTab] = useState(0);
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const [activeTech, setActiveTech] = useState<TechnologyItem>(ARSENAL_TECHNOLOGIES[0]);
 
-  const icons = [
-    <Cpu key="ai" className="w-4 h-4 text-moon-amber" />,
-    <Layers key="fullstack" className="w-4 h-4 text-cyanic-accent" />,
-    <ShieldCheck key="practices" className="w-4 h-4 text-violet-glow" />,
+  const categories = [
+    "All",
+    "Languages",
+    "Frontend",
+    "Backend",
+    "Database",
+    "Tools",
+    "AI / Emerging",
   ];
 
-  const currentCategory = PORTFOLIO_DATA.skillCategories[activeTab];
+  const filteredTechnologies =
+    selectedCategory === "All"
+      ? ARSENAL_TECHNOLOGIES
+      : ARSENAL_TECHNOLOGIES.filter((t) => t.category === selectedCategory);
 
   return (
-    <section id="skills" className="py-24 px-4 sm:px-6 lg:px-8 relative border-t border-surface-border">
-      <div className="max-w-7xl mx-auto">
+    <section id="skills" className="py-24 sm:py-32 relative border-t border-surface-border">
+      <Container size="wide">
         {/* Header */}
-        <div className="flex flex-col items-start max-w-2xl mb-12">
-          <div className="flex items-center gap-2 text-moon-amber text-xs font-mono tracking-wider uppercase mb-2">
-            <Terminal className="w-3.5 h-3.5" />
-            <span>Technical Capabilities</span>
-          </div>
-          <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-starlight-primary">
-            The Engineering Arsenal
-          </h2>
-          <p className="mt-2 text-sm sm:text-base text-starlight-secondary">
-            Disciplined competencies spanning autonomous intelligence runtimes, full-stack systems, and rapid hackathon engineering.
-          </p>
-        </div>
+        <Reveal type="fade-up">
+          <SectionHeading
+            tag="Engineering Matrix"
+            tagIcon={<Terminal className="w-3.5 h-3.5" />}
+            title="The Technology Arsenal"
+            description="A unified, interconnected technical stack spanning foundational computer science, modern full-stack web architecture, and autonomous AI systems."
+          />
+        </Reveal>
 
-        {/* Category Tabs */}
-        <div className="flex flex-wrap gap-2 mb-8">
-          {PORTFOLIO_DATA.skillCategories.map((cat, idx) => (
-            <button
-              key={cat.title}
-              onClick={() => setActiveTab(idx)}
-              className={`flex items-center gap-2.5 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-medium transition-all ${
-                activeTab === idx
-                  ? "bg-night-850 text-starlight-primary border border-night-600 shadow-[0_0_15px_rgba(255,237,194,0.06)]"
-                  : "bg-night-900/50 text-starlight-secondary border border-night-800 hover:border-night-700 hover:text-starlight-primary"
-              }`}
-            >
-              {icons[idx]}
-              <span>{cat.title}</span>
-            </button>
-          ))}
-        </div>
+        {/* Unified Command-Center Container */}
+        <Reveal type="scale-in" delay={0.1}>
+          <div className="rounded-2xl bg-night-900/70 border border-surface-border backdrop-blur-md shadow-surface-card overflow-hidden">
+            {/* Top Command Bar: Filter Tabs & Live Status */}
+            <div className="px-5 py-4 bg-night-850/80 border-b border-surface-border flex flex-col md:flex-row md:items-center justify-between gap-4">
+              {/* Category Pills */}
+              <div className="flex flex-wrap items-center gap-1.5">
+                {categories.map((cat) => {
+                  const count =
+                    cat === "All"
+                      ? ARSENAL_TECHNOLOGIES.length
+                      : ARSENAL_TECHNOLOGIES.filter((t) => t.category === cat).length;
+                  const isActive = selectedCategory === cat;
 
-        {/* Selected Category Skill Matrix */}
-        <div className="p-6 sm:p-8 rounded-xl bg-night-900/50 border border-night-750 backdrop-blur-sm">
-          <div className="mb-6 pb-4 border-b border-night-800">
-            <h3 className="text-lg font-bold text-starlight-primary flex items-center gap-2">
-              <span>{currentCategory.title}</span>
-            </h3>
-            <p className="text-xs sm:text-sm text-starlight-secondary mt-1">
-              {currentCategory.subtitle}
-            </p>
-          </div>
+                  return (
+                    <button
+                      key={cat}
+                      onClick={() => setSelectedCategory(cat)}
+                      className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all duration-200 flex items-center gap-1.5 focus:outline-none ${
+                        isActive
+                          ? "bg-night-800 text-moon-light border border-moon-border shadow-moon-soft font-semibold"
+                          : "text-starlight-secondary hover:text-starlight-primary hover:bg-night-800/50 border border-transparent"
+                      }`}
+                    >
+                      <span>{cat}</span>
+                      <span className={`text-[10px] ${isActive ? "text-moon-accent" : "text-starlight-dim"}`}>
+                        ({count})
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {currentCategory.skills.map((skill) => (
-              <div
-                key={skill.name}
-                className="p-4 rounded-lg bg-night-850/80 border border-night-750/90 hover:border-night-600 transition-colors"
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <h4 className="text-sm font-semibold text-starlight-primary">
-                    {skill.name}
-                  </h4>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-night-800 border border-night-700 text-moon-amber">
-                    {skill.level}
+              {/* Live Telemetry Ping */}
+              <div className="flex items-center gap-2 text-xs font-mono text-starlight-muted self-end md:self-auto shrink-0">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-moon-accent opacity-60"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-moon-accent"></span>
+                </span>
+                <span className="hidden sm:inline">SELECT NODE TO INSPECT</span>
+              </div>
+            </div>
+
+            {/* Main Content: Constellation Matrix + Interactive HUD Inspector */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-surface-border">
+              {/* Left / Central: Interconnected Technology Nodes */}
+              <div className="lg:col-span-7 p-6 sm:p-8">
+                <div className="mb-4 flex items-center justify-between">
+                  <span className="text-xs font-mono text-starlight-muted uppercase tracking-wider">
+                    Integrated Constellation ({filteredTechnologies.length} Technologies)
+                  </span>
+                  <span className="text-[11px] font-mono text-starlight-dim hidden sm:inline">
+                    Hover / Tap to update inspector
                   </span>
                 </div>
-                <p className="text-xs text-starlight-secondary leading-relaxed">
-                  {skill.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
 
-        {/* Quick Tech Tag Cloud */}
-        <div className="mt-8 flex flex-wrap items-center gap-2 text-xs font-mono text-starlight-muted">
-          <span className="text-starlight-secondary mr-2">Core Tooling:</span>
-          {["Next.js 15", "TypeScript", "Python", "Tailwind CSS", "React", "LangGraph", "FastAPI", "PostgreSQL", "Prisma", "Docker", "Git", "ChromaDB"].map((tool) => (
-            <span
-              key={tool}
-              className="px-2.5 py-1 rounded bg-night-900 border border-night-800 text-starlight-secondary"
-            >
-              {tool}
-            </span>
-          ))}
-        </div>
-      </div>
+                {/* Technology Node Chips Cluster */}
+                <div className="flex flex-wrap gap-2.5">
+                  {filteredTechnologies.map((tech) => {
+                    const isSelected = activeTech.id === tech.id;
+
+                    return (
+                      <button
+                        key={tech.id}
+                        onMouseEnter={() => setActiveTech(tech)}
+                        onClick={() => setActiveTech(tech)}
+                        className={`group relative text-left px-3.5 py-2.5 rounded-xl border transition-all duration-200 focus:outline-none ${
+                          isSelected
+                            ? "bg-night-800 border-moon-border shadow-moon-soft text-moon-light ring-1 ring-moon-border"
+                            : "bg-night-950/50 border-surface-border hover:border-surface-border-hover hover:bg-night-850/60 text-starlight-secondary hover:text-starlight-primary"
+                        }`}
+                      >
+                        <div className="flex items-center gap-2">
+                          <span
+                            className={`w-1.5 h-1.5 rounded-full transition-colors ${
+                              isSelected ? "bg-moon-accent" : "bg-starlight-dim group-hover:bg-starlight-secondary"
+                            }`}
+                          />
+                          <span className="text-xs sm:text-sm font-semibold tracking-tight font-mono">
+                            {tech.name}
+                          </span>
+                        </div>
+                        <span className="text-[10px] font-mono text-starlight-muted block mt-0.5 ml-3.5">
+                          {tech.category}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Right: Real-Time HUD Telemetry Inspector */}
+              <div className="lg:col-span-5 p-6 sm:p-8 bg-night-950/50 flex flex-col justify-between">
+                <div>
+                  {/* HUD Header */}
+                  <div className="flex items-center justify-between pb-3 mb-5 border-b border-surface-border/70">
+                    <span className="text-xs font-mono text-starlight-muted uppercase tracking-wider flex items-center gap-1.5">
+                      <Radio className="w-3.5 h-3.5 text-moon-accent" />
+                      <span>Telemetry Inspector</span>
+                    </span>
+
+                    <span
+                      className={`text-[10px] font-mono px-2 py-0.5 rounded-full border ${
+                        activeTech.status === "Core Stack"
+                          ? "bg-emerald-950/20 text-emerald-300 border-emerald-500/20"
+                          : activeTech.status === "Active Tool"
+                          ? "bg-sky-950/20 text-moon-accent border-moon-border"
+                          : "bg-night-850 text-starlight-muted border-surface-border"
+                      }`}
+                    >
+                      {activeTech.status}
+                    </span>
+                  </div>
+
+                  {/* Active Technology Title & Category */}
+                  <div className="mb-4">
+                    <span className="text-xs font-mono text-moon-accent uppercase tracking-wider">
+                      {activeTech.category}
+                    </span>
+                    <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-starlight-primary mt-0.5">
+                      {activeTech.name}
+                    </h3>
+                  </div>
+
+                  {/* Description */}
+                  <div className="space-y-4 text-xs sm:text-sm text-starlight-secondary leading-relaxed">
+                    <div className="p-3.5 rounded-xl bg-night-900 border border-surface-border">
+                      <span className="text-[11px] font-mono text-starlight-muted uppercase block mb-1">
+                        Functional Role:
+                      </span>
+                      <p>{activeTech.description}</p>
+                    </div>
+
+                    <div className="p-3.5 rounded-xl bg-night-900 border border-surface-border">
+                      <span className="text-[11px] font-mono text-starlight-muted uppercase block mb-1">
+                        Applied Context:
+                      </span>
+                      <p>{activeTech.application}</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Honest Engineering Disclaimer (No Fake Percentages) */}
+                <div className="mt-8 pt-4 border-t border-surface-border/60 flex items-center justify-between text-[11px] font-mono text-starlight-dim">
+                  <span>Authentic Competency</span>
+                  <span>Zero Fake %</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      </Container>
     </section>
   );
 }
