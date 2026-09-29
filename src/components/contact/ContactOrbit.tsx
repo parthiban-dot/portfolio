@@ -88,20 +88,31 @@ export function ContactOrbit() {
         />
 
         {/* Center Rotating Earth */}
-        <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-spin-slow z-10 pointer-events-none">
-          <Image
-            src="/images/earth.png"
-            alt="Earth"
-            width={earthSize}
-            height={earthSize}
-            className="rounded-full shadow-[0_0_60px_rgba(100,160,255,0.25)]"
-          />
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none flex items-center justify-center">
+          <div
+            style={{
+              width: `${earthSize}px`,
+              height: `${earthSize}px`,
+              animation: "spinSlow 60s linear infinite",
+              transformOrigin: "center center",
+            }}
+            className="rounded-full flex items-center justify-center pointer-events-none"
+          >
+            <Image
+              src="/images/earth.png"
+              alt="Earth"
+              width={earthSize}
+              height={earthSize}
+              className="rounded-full shadow-[0_0_60px_rgba(100,160,255,0.25)] select-none pointer-events-none"
+              priority
+            />
+          </div>
         </div>
 
         {/* Inner Orbit (30s) */}
         <div
           style={{ animation: "innerOrbit 30s linear infinite", transformOrigin: "0 0" }}
-          className="absolute left-1/2 top-1/2"
+          className="absolute left-1/2 top-1/2 pointer-events-auto"
         >
           {innerChannels.map((channel, i) => {
             const angle = (i / innerChannels.length) * 2 * Math.PI - Math.PI / 2;
@@ -113,11 +124,11 @@ export function ContactOrbit() {
               height: `${innerH}px`,
               left: `calc(50% + ${x}px)`,
               top: `calc(50% + ${y}px)`,
-              transform: "translate(-50%, -50%)",
+              transform: "translate(-50%, -50%) rotate(-360deg)",
               animation: "counterOrbit 30s linear infinite",
             };
 
-            const commonClass = `absolute flex items-center justify-center gap-1.5 sm:gap-2 bg-[#10121B] border border-[#A18AFF] shadow-[0_0_12px_rgba(161,143,255,0.6)] px-2 ${textSize} cursor-pointer hover:scale-105 transition-transform select-none`;
+            const commonClass = `absolute flex items-center justify-center gap-1.5 sm:gap-2 bg-[#10121B] border border-[#A18AFF] shadow-[0_0_12px_rgba(161,143,255,0.6)] px-2 ${textSize} cursor-pointer select-none`;
 
             if (channel.name === "Email") {
               return (
@@ -152,7 +163,7 @@ export function ContactOrbit() {
         {/* Outer Orbit (60s) */}
         <div
           style={{ animation: "outerOrbit 60s linear infinite", transformOrigin: "0 0" }}
-          className="absolute left-1/2 top-1/2"
+          className="absolute left-1/2 top-1/2 pointer-events-auto"
         >
           {outerChannels.map((channel, i) => {
             const angle = (i / outerChannels.length) * 2 * Math.PI - Math.PI / 2;
@@ -170,10 +181,10 @@ export function ContactOrbit() {
                   height: `${outerH}px`,
                   left: `calc(50% + ${x}px)`,
                   top: `calc(50% + ${y}px)`,
-                  transform: "translate(-50%, -50%)",
+                  transform: "translate(-50%, -50%) rotate(-360deg)",
                   animation: "counterOrbit 60s linear infinite",
                 }}
-                className={`absolute flex items-center justify-center gap-1.5 sm:gap-2 bg-[#10121B] border border-[#A18AFF] shadow-[0_0_12px_rgba(161,143,255,0.6)] px-2 ${textSize} cursor-pointer hover:scale-105 transition-transform select-none`}
+                className={`absolute flex items-center justify-center gap-1.5 sm:gap-2 bg-[#10121B] border border-[#A18AFF] shadow-[0_0_12px_rgba(161,143,255,0.6)] px-2 ${textSize} cursor-pointer select-none`}
               >
                 <Image src={channel.icon} alt={channel.name} width={iconSize} height={iconSize} className="shrink-0" />
                 <span className="text-[#E6E6F1] font-medium truncate">{channel.name}</span>
@@ -183,6 +194,25 @@ export function ContactOrbit() {
         </div>
 
       </div>
+
+      <style>{`
+        @keyframes innerOrbit {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+        @keyframes outerOrbit {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+        @keyframes counterOrbit {
+          0% { transform: translate(-50%, -50%) rotate(0deg); }
+          100% { transform: translate(-50%, -50%) rotate(-360deg); }
+        }
+        @keyframes spinSlow {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+      `}</style>
     </section>
   );
 }

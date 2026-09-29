@@ -57,7 +57,7 @@ body {
   color: #FFEDC2;
 }
 
-/* Orbit keyframes */
+/* Orbit and planetary animations */
 @keyframes innerOrbit {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
@@ -73,21 +73,27 @@ body {
   100% { transform: translate(-50%, -50%) rotate(-360deg); }
 }
 
+@keyframes spinSlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
 .animate-spin-slow {
-  animation: 60s linear infinite spin;
+  animation: spinSlow 60s linear infinite !important;
 }
 
-/* Accessibility: Reduced motion support */
-@media (prefers-reduced-motion: reduce) {
-  *, ::before, ::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+.animate-inner-orbit {
+  animation: innerOrbit 30s linear infinite !important;
+  transform-origin: 0 0 !important;
 }
+
+.animate-outer-orbit {
+  animation: outerOrbit 60s linear infinite !important;
+  transform-origin: 0 0 !important;
+}
+

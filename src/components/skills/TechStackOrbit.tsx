@@ -75,20 +75,31 @@ export function TechStackOrbit() {
         />
 
         {/* Center Rotating Moon */}
-        <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-spin-slow z-10 pointer-events-none">
-          <Image
-            src="/images/real.png"
-            alt="Moon"
-            width={centerSize}
-            height={centerSize}
-            className="rounded-full object-cover shadow-[0_0_50px_rgba(255,255,255,0.18)]"
-          />
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none flex items-center justify-center">
+          <div
+            style={{
+              width: `${centerSize}px`,
+              height: `${centerSize}px`,
+              animation: "spinSlow 60s linear infinite",
+              transformOrigin: "center center",
+            }}
+            className="rounded-full flex items-center justify-center pointer-events-none"
+          >
+            <Image
+              src="/images/real.png"
+              alt="Moon"
+              width={centerSize}
+              height={centerSize}
+              className="rounded-full object-cover shadow-[0_0_50px_rgba(255,255,255,0.18)] select-none pointer-events-none"
+              priority
+            />
+          </div>
         </div>
 
         {/* Inner Orbit (30s) */}
         <div
           style={{ animation: "innerOrbit 30s linear infinite", transformOrigin: "0 0" }}
-          className="absolute left-1/2 top-1/2"
+          className="absolute left-1/2 top-1/2 pointer-events-auto"
         >
           {innerStack.map((tech, i) => {
             const angle = (i / innerStack.length) * 2 * Math.PI - Math.PI / 2;
@@ -106,7 +117,7 @@ export function TechStackOrbit() {
                   transform: "translate(-50%, -50%)",
                   animation: "counterOrbit 30s linear infinite",
                 }}
-                className={`absolute flex items-center justify-center gap-1.5 sm:gap-2 bg-[#10121B] border border-[#A18AFF] shadow-[0_0_12px_rgba(161,143,255,0.6)] px-2 ${fontSize} cursor-pointer hover:scale-105 transition-transform select-none rounded-none`}
+                className={`absolute flex items-center justify-center gap-1.5 sm:gap-2 bg-[#10121B] border-[2px] border-[#A18AFF] shadow-[0_0_12px_rgba(161,143,255,0.6)] px-2 ${fontSize} cursor-pointer select-none`}
               >
                 <Image
                   src={tech.icon}
@@ -124,7 +135,7 @@ export function TechStackOrbit() {
         {/* Outer Orbit (60s) */}
         <div
           style={{ animation: "outerOrbit 60s linear infinite", transformOrigin: "0 0" }}
-          className="absolute left-1/2 top-1/2"
+          className="absolute left-1/2 top-1/2 pointer-events-auto"
         >
           {outerStack.map((tech, i) => {
             const angle = (i / outerStack.length) * 2 * Math.PI - Math.PI / 2;
@@ -142,7 +153,7 @@ export function TechStackOrbit() {
                   transform: "translate(-50%, -50%)",
                   animation: "counterOrbit 60s linear infinite",
                 }}
-                className={`absolute flex items-center justify-center gap-1.5 sm:gap-2 bg-[#10121B] border border-[#A18AFF] shadow-[0_0_12px_rgba(161,143,255,0.6)] px-2 ${fontSize} cursor-pointer hover:scale-105 transition-transform select-none rounded-none`}
+                className={`absolute flex items-center justify-center gap-1.5 sm:gap-2 bg-[#10121B] border-[2px] border-[#A18AFF] shadow-[0_0_12px_rgba(161,143,255,0.6)] px-2 ${fontSize} cursor-pointer select-none`}
               >
                 <Image
                   src={tech.icon}
@@ -158,6 +169,25 @@ export function TechStackOrbit() {
         </div>
 
       </div>
+
+      <style>{`
+        @keyframes innerOrbit {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+        @keyframes outerOrbit {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+        @keyframes counterOrbit {
+          0% { transform: translate(-50%, -50%) rotate(0deg); }
+          100% { transform: translate(-50%, -50%) rotate(-360deg); }
+        }
+        @keyframes spinSlow {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+      `}</style>
     </section>
   );
 }
