@@ -54,8 +54,8 @@ export function SkillsSection() {
           <div className="rounded-2xl bg-night-900/70 border border-surface-border backdrop-blur-md shadow-surface-card overflow-hidden">
             {/* Top Command Bar: Filter Tabs & Live Status */}
             <div className="px-5 py-4 bg-night-850/80 border-b border-surface-border flex flex-col md:flex-row md:items-center justify-between gap-4">
-              {/* Category Pills */}
-              <div className="flex flex-wrap items-center gap-1.5">
+              {/* Category Pills (Touch-scrollable on mobile, wrapped on desktop) */}
+              <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none max-w-full -mx-2 px-2 sm:mx-0 sm:px-0 sm:flex-wrap">
                 {categories.map((cat) => {
                   const count =
                     cat === "All"
@@ -67,7 +67,7 @@ export function SkillsSection() {
                     <button
                       key={cat}
                       onClick={() => setSelectedCategory(cat)}
-                      className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all duration-200 flex items-center gap-1.5 focus:outline-none ${
+                      className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all duration-200 flex items-center gap-1.5 focus:outline-none shrink-0 min-h-[36px] ${
                         isActive
                           ? "bg-night-800 text-moon-light border border-moon-border shadow-moon-soft font-semibold"
                           : "text-starlight-secondary hover:text-starlight-primary hover:bg-night-800/50 border border-transparent"

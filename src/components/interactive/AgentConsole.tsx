@@ -131,7 +131,7 @@ export function AgentConsole() {
             <button
               onClick={() => handleRunSimulation(selectedPresetIndex)}
               disabled={isRunning}
-              className="ml-auto inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-moon-light hover:bg-moon-glow text-night-950 font-medium text-xs transition-all disabled:opacity-50"
+              className="w-full sm:w-auto sm:ml-auto inline-flex items-center justify-center gap-1.5 px-3.5 py-2 sm:py-1.5 rounded bg-moon-light hover:bg-moon-glow text-night-950 font-medium text-xs transition-all disabled:opacity-50 mt-1 sm:mt-0 min-h-[38px]"
             >
               <Play className="w-3.5 h-3.5 fill-current" />
               <span>{isRunning ? "Executing..." : "Re-run Agent"}</span>
@@ -155,21 +155,21 @@ export function AgentConsole() {
                 {activePreset.steps.slice(0, currentStepIndex).map((step, idx) => (
                   <div
                     key={idx}
-                    className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 p-2.5 rounded bg-night-900/40 border border-night-800/80 animate-in fade-in slide-in-from-left-2 duration-150"
+                    className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-2.5 rounded bg-night-900/40 border border-night-800/80 animate-in fade-in slide-in-from-left-2 duration-150"
                   >
-                    <div className="flex items-center gap-2">
-                      <span className="text-emerald-400">
+                    <div className="flex flex-wrap sm:flex-nowrap items-start sm:items-center gap-2">
+                      <span className="text-emerald-400 shrink-0 mt-0.5 sm:mt-0">
                         <Check className="w-4 h-4" />
                       </span>
-                      <span className="text-moon-light font-semibold min-w-[90px]">
+                      <span className="text-moon-light font-semibold shrink-0">
                         [{step.stage}]
                       </span>
-                      <span className="text-starlight-secondary">
+                      <span className="text-starlight-secondary break-words">
                         {step.message}
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-2 text-[11px] text-starlight-muted self-end sm:self-auto">
+                    <div className="flex items-center gap-2 text-[11px] text-starlight-muted self-end sm:self-auto shrink-0">
                       {step.tool && (
                         <span className="px-1.5 py-0.5 rounded bg-night-800 border border-night-700 text-violet-glow">
                           tool:{step.tool}

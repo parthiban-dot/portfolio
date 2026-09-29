@@ -219,7 +219,7 @@ export function ContactSection() {
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="e.g. Alex Rivera"
-                        className={`w-full px-4 py-3 rounded-lg text-sm bg-surface-2 text-white placeholder-starlight-muted/50 border transition-all focus:outline-none focus:ring-1 ${
+                        className={`w-full px-4 py-3 rounded-lg text-base sm:text-sm bg-surface-2 text-white placeholder-starlight-muted/50 border transition-all focus:outline-none focus:ring-1 ${
                           errors.name 
                             ? "border-red-500/80 focus:ring-red-400" 
                             : "border-white/[0.08] focus:border-moon-accent/60 focus:ring-moon-accent/40"
@@ -247,7 +247,7 @@ export function ContactSection() {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="e.g. alex@company.com"
-                        className={`w-full px-4 py-3 rounded-lg text-sm bg-surface-2 text-white placeholder-starlight-muted/50 border transition-all focus:outline-none focus:ring-1 ${
+                        className={`w-full px-4 py-3 rounded-lg text-base sm:text-sm bg-surface-2 text-white placeholder-starlight-muted/50 border transition-all focus:outline-none focus:ring-1 ${
                           errors.email 
                             ? "border-red-500/80 focus:ring-red-400" 
                             : "border-white/[0.08] focus:border-moon-accent/60 focus:ring-moon-accent/40"
@@ -275,7 +275,7 @@ export function ContactSection() {
                         value={formData.message}
                         onChange={handleChange}
                         placeholder="Tell me about the problem you want to solve, tech requirements, or hackathon collaboration..."
-                        className={`w-full px-4 py-3 rounded-lg text-sm bg-surface-2 text-white placeholder-starlight-muted/50 border transition-all focus:outline-none focus:ring-1 resize-none ${
+                        className={`w-full px-4 py-3 rounded-lg text-base sm:text-sm bg-surface-2 text-white placeholder-starlight-muted/50 border transition-all focus:outline-none focus:ring-1 resize-none ${
                           errors.message 
                             ? "border-red-500/80 focus:ring-red-400" 
                             : "border-white/[0.08] focus:border-moon-accent/60 focus:ring-moon-accent/40"

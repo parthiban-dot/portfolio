@@ -53,19 +53,19 @@ export function HeroSection() {
           {/* ================================================== */}
           <div className="lg:col-span-7 flex flex-col items-start text-left">
             {/* Step 2: Small label fades in */}
-            <motion.div {...anim(0.1)}>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-night-900 border border-surface-border text-xs font-mono text-starlight-secondary mb-6 backdrop-blur-sm shadow-sm">
-                <span className="w-1.5 h-1.5 rounded-full bg-moon-accent animate-pulse" />
-                <span>Sri Shakthi Institute of Engineering &amp; Technology</span>
-                <span className="text-starlight-dim">•</span>
-                <span className="text-moon-accent">2nd Year CSE</span>
+            <motion.div {...anim(0.1)} className="max-w-full">
+              <div className="inline-flex flex-wrap items-center gap-1.5 sm:gap-2 px-3 py-1.5 rounded-xl sm:rounded-full bg-night-900 border border-surface-border text-[11px] sm:text-xs font-mono text-starlight-secondary mb-6 backdrop-blur-sm shadow-sm max-w-full">
+                <span className="w-1.5 h-1.5 rounded-full bg-moon-accent animate-pulse shrink-0" />
+                <span className="truncate max-w-[200px] sm:max-w-none">Sri Shakthi Inst. of Engg &amp; Tech</span>
+                <span className="text-starlight-dim hidden xs:inline">•</span>
+                <span className="text-moon-accent font-medium">2nd Year CSE</span>
               </div>
             </motion.div>
 
             {/* Step 3: Main message heading reveals */}
             <motion.h1
               {...anim(0.2)}
-              className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-starlight-primary leading-[1.1] mb-4"
+              className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-starlight-primary leading-[1.15] mb-4 break-words"
             >
               Hey, I&apos;m{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-starlight-primary via-moon-light to-moon-accent">
@@ -75,7 +75,7 @@ export function HeroSection() {
 
             {/* Step 4: Supporting positioning */}
             <motion.div {...anim(0.3)}>
-              <p className="text-sm sm:text-base md:text-lg font-mono text-moon-accent tracking-tight mb-4">
+              <p className="text-xs sm:text-base md:text-lg font-mono text-moon-accent tracking-tight mb-4">
                 AI Engineering • Full-Stack Development • Hackathon Enthusiast
               </p>
             </motion.div>
@@ -83,7 +83,7 @@ export function HeroSection() {
             {/* Step 4 (cont): Strong short introduction */}
             <motion.p
               {...anim(0.38)}
-              className="text-base sm:text-lg text-starlight-secondary font-normal leading-relaxed max-w-2xl mb-8"
+              className="text-sm sm:text-base md:text-lg text-starlight-secondary font-normal leading-relaxed max-w-2xl mb-8"
             >
               I&apos;m a Computer Science and Engineering student focused on building intelligent systems, useful products, and real-world solutions.
             </motion.p>
@@ -91,14 +91,14 @@ export function HeroSection() {
             {/* Step 5: CTA buttons */}
             <motion.div
               {...anim(0.48)}
-              className="flex flex-wrap items-center gap-3 sm:gap-4 mb-10 w-full sm:w-auto"
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 mb-8 w-full sm:w-auto"
             >
               <Button
                 href="#projects"
                 variant="primary"
                 size="md"
                 rightIcon={<ArrowDown className="w-4 h-4" />}
-                className="w-full sm:w-auto"
+                className="w-full sm:w-auto min-h-[44px] justify-center"
               >
                 View My Work
               </Button>
@@ -108,7 +108,7 @@ export function HeroSection() {
                 variant="secondary"
                 size="md"
                 rightIcon={<ArrowUpRight className="w-4 h-4 text-starlight-muted" />}
-                className="w-full sm:w-auto"
+                className="w-full sm:w-auto min-h-[44px] justify-center"
               >
                 Let&apos;s Connect
               </Button>
