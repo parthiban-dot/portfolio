@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Atmosphere } from "@/components/ui/Atmosphere";
+import { CursorGlow } from "@/components/ui/CursorGlow";
 import { Navbar } from "@/components/navigation/Navbar";
 import { HeroSection } from "@/components/hero/HeroSection";
 import { AboutSection } from "@/components/about/AboutSection";
@@ -18,6 +19,7 @@ export default function Home() {
     <div className="relative min-h-screen bg-night-950 text-starlight-primary selection:bg-moon-accent/20 selection:text-white overflow-x-hidden">
       {/* Background Atmosphere: Subtle Starlight & Zenith Moonlight Mist */}
       <Atmosphere showGrid={true} />
+      <CursorGlow />
 
       {/* Reusable Minimal Premium Navbar */}
       <Navbar />

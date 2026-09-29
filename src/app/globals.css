@@ -61,6 +61,15 @@ body {
     linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
 }
 
+/* Mobile lightweight transitions */
+@media (max-width: 640px) {
+  .hover\:scale-\[1\.008\], 
+  .hover\:scale-\[1\.01\], 
+  .hover\:scale-\[1\.02\] {
+    transform: none !important;
+  }
+}
+
 /* Accessibility: Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {
