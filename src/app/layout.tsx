@@ -15,36 +15,41 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Parthiban V — AI Engineer & Full-Stack Developer",
+  title: "Parthiban V — AI Engineering & Full-Stack Developer",
   description:
-    "Portfolio of Parthiban V — 2nd Year CS student at Sri Shakthi Institute of Engineering and Technology, specializing in AI Engineering, Autonomous Agents, and Full-Stack Systems.",
+    "Portfolio of Parthiban V — Computer Science and Engineering student at Sri Shakthi Institute of Engineering and Technology. Focused on AI Engineering, full-stack systems, and real-world problem solving.",
   keywords: [
     "Parthiban V",
-    "AI Engineer",
+    "AI Engineering",
     "Full-Stack Developer",
-    "Machine Learning",
-    "Autonomous AI Agents",
-    "Next.js",
+    "Computer Science and Engineering",
     "Sri Shakthi Institute of Engineering and Technology",
+    "DRACARYS",
+    "Python",
+    "FastAPI",
+    "Next.js",
+    "React",
+    "Tailwind CSS",
     "Hackathons",
-    "Freelancer",
+    "Coimbatore India",
   ],
-  authors: [{ name: "Parthiban V" }],
+  authors: [{ name: "Parthiban V", url: "https://github.com/parthiban-dot" }],
   creator: "Parthiban V",
+  metadataBase: new URL("https://github.com/parthiban-dot/portfolio"),
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://parthiban.dev",
-    title: "Parthiban V — AI Engineer & Full-Stack Developer",
+    url: "https://github.com/parthiban-dot/portfolio",
+    title: "Parthiban V — AI Engineering & Full-Stack Developer",
     description:
-      "2nd Year CS student building intelligent autonomous agents, high-performance web systems, and hackathon-winning solutions.",
+      "Computer Science student building intelligent systems, full-stack web applications, and real-world solutions.",
     siteName: "Parthiban V Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Parthiban V — AI Engineer & Full-Stack Developer",
+    title: "Parthiban V — AI Engineering & Full-Stack Developer",
     description:
-      "Crafting autonomous AI systems and robust full-stack applications with engineering precision.",
+      "Computer Science student building intelligent systems, full-stack web applications, and real-world solutions.",
   },
   robots: {
     index: true,
@@ -53,7 +58,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#030408",
+  themeColor: "#030508",
   width: "device-width",
   initialScale: 1,
 };
@@ -65,7 +70,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} dark scroll-smooth`}>
-      <body className="bg-night-950 text-starlight-primary font-sans antialiased min-h-screen selection:bg-moon-light/20 selection:text-moon-light">
+      <body className="bg-night-950 text-starlight-primary font-sans antialiased min-h-screen selection:bg-moon-accent/20 selection:text-white">
         {children}
       </body>
     </html>

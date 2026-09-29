@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://parthiban.dev/sitemap.xml",
+    sitemap: "https://parthiban-dot.github.io/portfolio/sitemap.xml",
   };
 }
