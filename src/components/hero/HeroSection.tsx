@@ -57,7 +57,7 @@ export function HeroSection() {
           variants={itemVariants}
           className="mt-9 text-[#B0B3C5] text-xs sm:text-base md:text-lg italic px-2 sm:px-0 max-w-[95%] md:max-w-[70%]"
         >
-          Computer Science and Engineering student focused on AI Engineering, Full-Stack Development, and turning complex ideas into intuitive, high-performance web experiences — day or night.
+          Fueled by passion, I’m a full-stack web developer, designer and also aspiring AI engineer who turns ideas into intuitive, high-performance web experiences — day or night.
         </motion.p>
 
         <motion.button
