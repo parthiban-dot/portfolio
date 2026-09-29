@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -24,18 +24,23 @@ export function Reveal({
   viewportMargin = "-50px",
 }: RevealProps) {
   const shouldReduceMotion = useReducedMotion();
+  const [isMounted, setIsMounted] = useState(false);
 
-  if (shouldReduceMotion) {
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted || shouldReduceMotion) {
     return <div className={className}>{children}</div>;
   }
 
   const variants = {
     "fade-up": {
-      hidden: { opacity: 0, y: 20 },
+      hidden: { opacity: 0, y: 16 },
       visible: { opacity: 1, y: 0 },
     },
     "fade-down": {
-      hidden: { opacity: 0, y: -20 },
+      hidden: { opacity: 0, y: -16 },
       visible: { opacity: 1, y: 0 },
     },
     "fade-in": {
@@ -43,11 +48,11 @@ export function Reveal({
       visible: { opacity: 1 },
     },
     "slide-in": {
-      hidden: { opacity: 0, x: -20 },
+      hidden: { opacity: 0, x: -16 },
       visible: { opacity: 1, x: 0 },
     },
     "scale-in": {
-      hidden: { opacity: 0, scale: 0.96 },
+      hidden: { opacity: 0, scale: 0.97 },
       visible: { opacity: 1, scale: 1 },
     },
   };
