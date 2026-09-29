@@ -1,8 +1,9 @@
 "use client";
 
 import React from "react";
-import { ArrowUp, Heart, Terminal, Sparkles } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
+import { GithubIcon } from "@/components/icons/SocialIcons";
 
 export function Footer() {
   const scrollToTop = () => {
@@ -26,9 +27,19 @@ export function Footer() {
           </p>
         </div>
 
-        {/* Philosophy / Tech stack note */}
-        <div className="flex items-center gap-2 text-center">
-          <span>Engineered with Next.js 15, TypeScript &amp; Tailwind CSS</span>
+        {/* Philosophy / Tech stack note & Repo link */}
+        <div className="flex flex-col sm:flex-row items-center gap-3 text-center">
+          <span>Engineered with Next.js 16, TypeScript &amp; Tailwind CSS</span>
+          <span className="hidden sm:inline text-night-700">•</span>
+          <a
+            href={PORTFOLIO_DATA.personal.socialLinks.repo}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1.5 text-moon-light hover:text-moon-glow transition-colors"
+          >
+            <GithubIcon className="w-3.5 h-3.5" />
+            <span>parthiban-dot/portfolio</span>
+          </a>
         </div>
 
         {/* Back to Top */}

@@ -36,7 +36,7 @@ export interface Milestone {
 export const PORTFOLIO_DATA = {
   personal: {
     name: "Parthiban V",
-    handle: "@parthiban",
+    handle: "@parthiban-dot",
     role: "AI Engineer & Full-Stack Developer",
     statusBadge: "Available for freelance & engineering roles",
     tagline: "Building intelligent agents and high-performance web systems with craft and clarity.",
@@ -53,7 +53,8 @@ export const PORTFOLIO_DATA = {
       "Whether developing multi-agent workflows, designing fluid web interfaces, or consulting on freelance client products, my priority is always the same: purposeful engineering, measurable performance, and seamless user experience.",
     ],
     socialLinks: {
-      github: "https://github.com",
+      github: "https://github.com/parthiban-dot",
+      repo: "https://github.com/parthiban-dot/portfolio",
       linkedin: "https://linkedin.com",
       twitter: "https://twitter.com",
       email: "contact.parthiban.v@gmail.com",
@@ -106,7 +107,7 @@ export const PORTFOLIO_DATA = {
         "Storage: Redis for active task state & PostgreSQL for audit logs",
       ],
       techStack: ["Next.js", "TypeScript", "Python", "Tailwind CSS", "LangGraph", "FastAPI", "Redis"],
-      githubUrl: "https://github.com",
+      githubUrl: "https://github.com/parthiban-dot",
       liveUrl: "https://github.com",
     },
     {
@@ -131,7 +132,7 @@ export const PORTFOLIO_DATA = {
         "State Management: Zustand with undo/redo graph history",
       ],
       techStack: ["Next.js", "React Flow", "TypeScript", "Tailwind CSS", "ChromaDB", "Zustand"],
-      githubUrl: "https://github.com",
+      githubUrl: "https://github.com/parthiban-dot",
       liveUrl: "https://github.com",
     },
     {
@@ -156,7 +157,7 @@ export const PORTFOLIO_DATA = {
         "Styling: Tailwind CSS with dark mode moonlight palette",
       ],
       techStack: ["Next.js", "PostgreSQL", "Prisma", "TypeScript", "Tailwind CSS", "NextAuth"],
-      githubUrl: "https://github.com",
+      githubUrl: "https://github.com/parthiban-dot",
       liveUrl: "https://github.com",
     },
     {
@@ -180,7 +181,7 @@ export const PORTFOLIO_DATA = {
         "Interface: Next.js + Tailwind CSS with keyboard shortcuts",
       ],
       techStack: ["TypeScript", "Next.js", "Tree-sitter", "WebAssembly", "Tailwind CSS"],
-      githubUrl: "https://github.com",
+      githubUrl: "https://github.com/parthiban-dot",
     },
   ],
 
