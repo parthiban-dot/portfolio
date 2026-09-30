@@ -1,10 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
 import { ProjectDetailModal } from "./ProjectDetailModal";
 import { PORTFOLIO_DATA, Project } from "@/data/portfolioData";
-import { VirtualTeacherVisual, DracarysVisual, CollegiateLabVisual } from "./ProjectVisuals";
+import { CollegiateLabVisual } from "./ProjectVisuals";
 
 export function ProjectsSection() {
   const [activeProject, setActiveProject] = useState<Project | null>(null);
@@ -24,7 +25,11 @@ export function ProjectsSection() {
       buttonText: "GitHub Repository",
       action: "link",
       url: "https://github.com/shv2312/HostelHub",
-      visual: <VirtualTeacherVisual />,
+      visual: (
+        <div className="relative w-full aspect-[4/3] rounded-md overflow-hidden border border-[#3F4454] shadow-xl shadow-black/40">
+          <Image src="/images/hostelhub.jpg" alt="HostelHub" fill className="object-cover object-top" />
+        </div>
+      ),
     },
     {
       data: PORTFOLIO_DATA.projects[1], // DRACARYS
@@ -40,7 +45,11 @@ export function ProjectsSection() {
       buttonText: "Live Demo",
       action: "link",
       url: "https://dracarysweb.vercel.app/",
-      visual: <DracarysVisual />,
+      visual: (
+        <div className="relative w-full aspect-[4/3] rounded-md overflow-hidden border border-[#3F4454] shadow-xl shadow-black/40">
+          <Image src="/images/dracarys.jpg" alt="DRACARYS" fill className="object-cover object-top" />
+        </div>
+      ),
     },
     {
       data: PORTFOLIO_DATA.projects[2], // SIET BGV
