@@ -26,7 +26,7 @@ export function ProjectsSection() {
       action: "link",
       url: "https://github.com/shv2312/HostelHub",
       visual: (
-        <Image src="/images/hostelhub.jpg" alt="HostelHub" fill className="object-cover object-top" />
+        <Image src="/images/hostelhub.jpg" alt="HostelHub" fill className="object-cover object-center" />
       ),
     },
     {
@@ -44,7 +44,7 @@ export function ProjectsSection() {
       action: "link",
       url: "https://dracarysweb.vercel.app/",
       visual: (
-        <Image src="/images/dracarys.jpg" alt="DRACARYS" fill className="object-cover object-top" />
+        <Image src="/images/dracarys.jpg" alt="DRACARYS" fill className="object-cover object-center" />
       ),
     },
     {
