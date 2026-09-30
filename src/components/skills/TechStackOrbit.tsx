@@ -54,7 +54,7 @@ export function TechStackOrbit() {
   const outerPillH = isSmall ? 28 : isMedium ? 38 : 46;
 
   return (
-    <section className="flex flex-col items-center justify-center bg-[#03040A] overflow-hidden pt-24 pb-12 sm:pb-24 md:pb-36 lg:pb-64 xl:pb-72 w-full relative">
+    <section id="skills" className="flex flex-col items-center pt-24 w-full relative min-h-screen">
       <h2 className="text-[#E6E6F1] text-2xl sm:text-3xl md:text-4xl font-bold text-center">
         My Tech Stack in Orbit
       </h2>
@@ -62,17 +62,10 @@ export function TechStackOrbit() {
         From core programming languages to modern web frameworks, these are the technologies I orbit around every day.
       </p>
 
-      <div className="relative w-full h-[460px] sm:h-[620px] md:h-[850px] mt-6 sm:mt-12 xl:mt-20">
+      <div className="relative w-full flex-1 mt-12 sm:mt-16 xl:mt-20 min-h-[520px] sm:min-h-[700px] md:min-h-[900px]">
         
-        {/* Subtle Orbit Path Rings */}
-        <div
-          style={{ width: `${innerRadius * 2}px`, height: `${innerRadius * 2}px` }}
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[#3F4454]/40 pointer-events-none"
-        />
-        <div
-          style={{ width: `${outerRadius * 2}px`, height: `${outerRadius * 2}px` }}
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[#3F4454]/25 pointer-events-none"
-        />
+
+
 
         {/* Center Rotating Moon */}
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none flex items-center justify-center">
@@ -83,14 +76,14 @@ export function TechStackOrbit() {
               animation: "spinSlow 60s linear infinite",
               transformOrigin: "center center",
             }}
-            className="rounded-full flex items-center justify-center pointer-events-none"
+            className="rounded-full overflow-hidden pointer-events-none"
           >
             <Image
               src="/images/real.png"
               alt="Moon"
               width={centerSize}
               height={centerSize}
-              className="rounded-full object-cover shadow-[0_0_50px_rgba(255,255,255,0.18)] select-none pointer-events-none"
+              className="object-cover w-full h-full select-none pointer-events-none"
               priority
             />
           </div>

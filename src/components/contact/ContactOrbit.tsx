@@ -67,7 +67,7 @@ export function ContactOrbit() {
   const textSize = isSmall ? "text-[8px]" : isMedium ? "text-xs" : "text-sm";
 
   return (
-    <section id="contact" className="flex flex-col items-center justify-center bg-[#03040A] overflow-hidden py-24 w-full relative">
+    <section id="contact" className="flex flex-col items-center pt-24 pb-16 w-full relative min-h-screen">
       <h2 className="text-[#E6E6F1] text-2xl md:text-4xl font-bold text-center">
         Reach Me from Earth
       </h2>
@@ -75,17 +75,10 @@ export function ContactOrbit() {
         No matter where you are, your signal will always find me.
       </p>
 
-      <div className="relative w-full h-[450px] sm:h-[650px] md:h-[820px] mt-6 sm:mt-16 xl:mt-24">
+      <div className="relative w-full flex-1 mt-12 sm:mt-16 xl:mt-20 min-h-[520px] sm:min-h-[700px] md:min-h-[900px]">
         
-        {/* Subtle Orbit Rings */}
-        <div
-          style={{ width: `${innerRadius * 2}px`, height: `${innerRadius * 2}px` }}
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[#A18AFF]/30 pointer-events-none"
-        />
-        <div
-          style={{ width: `${outerRadius * 2}px`, height: `${outerRadius * 2}px` }}
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[#3F4454]/30 pointer-events-none"
-        />
+
+
 
         {/* Center Rotating Earth */}
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none flex items-center justify-center">
@@ -96,14 +89,14 @@ export function ContactOrbit() {
               animation: "spinSlow 60s linear infinite",
               transformOrigin: "center center",
             }}
-            className="rounded-full flex items-center justify-center pointer-events-none"
+            className="rounded-full overflow-hidden pointer-events-none"
           >
             <Image
               src="/images/earth.png"
               alt="Earth"
               width={earthSize}
               height={earthSize}
-              className="rounded-full shadow-[0_0_60px_rgba(100,160,255,0.25)] select-none pointer-events-none"
+              className="object-cover w-full h-full select-none pointer-events-none"
               priority
             />
           </div>

@@ -43,7 +43,7 @@ export function HeroSection() {
           variants={itemVariants}
           className="text-[#E6E6F1] text-3xl sm:text-5xl md:text-5xl font-bold"
         >
-          Hey, I’m Parthiban
+          Hey, I'm Parthiban
         </motion.h1>
 
         <motion.h2
@@ -57,7 +57,7 @@ export function HeroSection() {
           variants={itemVariants}
           className="mt-9 text-[#B0B3C5] text-xs sm:text-base md:text-lg italic px-2 sm:px-0 max-w-[95%] md:max-w-[70%]"
         >
-          Fueled by passion, I’m a full-stack web developer, designer and also aspiring AI engineer who turns ideas into intuitive, high-performance web experiences — day or night.
+          Fueled by passion, I'm a full-stack web developer, designer and also aspiring AI engineer who turns ideas into intuitive, high-performance web experiences — day or night.
         </motion.p>
 
         <motion.button

@@ -47,7 +47,7 @@ export const DracarysFeature: React.FC = () => {
   const [hoveredPillar, setHoveredPillar] = useState<number | null>(null);
 
   return (
-    <section id="dracarys" className="relative py-28 overflow-hidden bg-night-950">
+    <section id="dracarys" className="relative py-28 overflow-hidden">
       {/* Cinematic Ambient Glow - Subtle ember & moonlight contrast */}
       <div 
         aria-hidden="true" 

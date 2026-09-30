@@ -11,18 +11,19 @@ export function ProjectsSection() {
 
   const projects = [
     {
-      data: PORTFOLIO_DATA.projects[0], // AI Virtual Teacher
-      tagline: "An intelligent pedagogical system built with Python, FastAPI, and Next.js.",
-      description: "AI Virtual Teacher understands educational material, personalizes lessons, explains concepts with Socratic analogies, generates diagnostic questions, and adapts teaching based on learner comprehension.",
+      data: PORTFOLIO_DATA.projects[0], // HostelHub
+      tagline: "AI-Powered Hostel Security & Management System with real-time facial recognition.",
+      description: "HostelHub is a distributed, production-level college hostel platform combining deep learning facial recognition (RetinaFace + ArcFace) with a centralized management dashboard — automating attendance, detecting intruders, managing grievances, and tracking mess feedback across a 3-node architecture.",
       bullets: [
-        <>★ Dynamic concept deconstruction and <strong>Socratic explanation</strong> generation</>,
-        <>★ Automated contextual question synthesis from <strong>syllabus material</strong></>,
-        <>★ Adaptive learner evaluation measuring <strong>comprehension depth</strong> vs surface recall</>,
-        <>★ Real-time pedagogy adjustment that <strong>re-routes learning pathways</strong> upon knowledge gaps</>,
-        <>★ High-performance async backend with <strong>FastAPI and Next.js</strong> frontend</>,
+        <>★ <strong>AI Facial Recognition</strong> — auto-logs student attendance, flags unknown intruders in real-time</>,
+        <>★ <strong>Intrusion Detection</strong> — captures snapshots & logs security alerts from live CCTV footage</>,
+        <>★ <strong>Role-Based Dashboard</strong> — student lists, live security logs, real-time monitoring</>,
+        <>★ <strong>Grievance & Food Feedback</strong> — digital complaint tracking and mess satisfaction system</>,
+        <>★ <strong>~2,500+ frames</strong> processed with stable GPU inference on 3-node distributed setup</>,
       ],
-      buttonText: "Case Study & Architecture",
-      action: "modal",
+      buttonText: "GitHub Repository",
+      action: "link",
+      url: "https://github.com/shv2312/HostelHub",
       visual: <VirtualTeacherVisual />,
     },
     {
@@ -42,17 +43,17 @@ export function ProjectsSection() {
       visual: <DracarysVisual />,
     },
     {
-      data: PORTFOLIO_DATA.projects[2], // Exploratory Lab Builds
-      tagline: "Experimental prototypes, C++ algorithms, and autonomous agent workflows.",
-      description: "A continuous development sandbox exploring autonomous agent architectures, local LLM evaluation benchmarks, C++ algorithmic systems, and rapid MVPs being readied for upcoming collegiate hackathons.",
+      data: PORTFOLIO_DATA.projects[2], // SIET BGV
+      tagline: "Institutional platform for tamper-proof, automated academic credential verification.",
+      description: "The SIET BGV Portal enables corporate employers and HR agencies to verify the educational credentials of SIET alumni via a strict digital pipeline — OTP-authenticated ingestion, automated algorithmic DB matching, and async email report dispatch.",
       bullets: [
-        <>★ Algorithmic optimization benchmarks in <strong>C++ and Python</strong></>,
-        <>★ Multi-agent tool execution workflows and <strong>deterministic routing</strong></>,
-        <>★ Sprint templates configured for <strong>rapid hackathon velocity</strong></>,
-        <>★ Structured relational database schemas and <strong>API interfaces</strong></>,
-        <>★ Continuous codebase updates on <strong>GitHub</strong></>,
+        <>★ <strong>Live SMTP Email OTP</strong> — multi-factor identity verification for HR/agency access</>,
+        <>★ <strong>Automated Verification Engine</strong> — instant DB cross-referencing against institutional records</>,
+        <>★ <strong>Async Report Dispatch</strong> — branded credential reports delivered to HR emails automatically</>,
+        <>★ <strong>Public Status Tracking</strong> — real-time verification outcomes via unique Request IDs</>,
+        <>★ <strong>Admin Dashboard</strong> — role-based oversight of all verification records</>,
       ],
-      buttonText: "GitHub Profile",
+      buttonText: "GitHub Repository",
       action: "link",
       url: "https://github.com/parthiban-dot",
       visual: <CollegiateLabVisual />,

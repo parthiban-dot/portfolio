@@ -8,10 +8,14 @@ import { TechStackOrbit } from "@/components/skills/TechStackOrbit";
 import { ProjectsSection } from "@/components/projects/ProjectsSection";
 import { ContactOrbit } from "@/components/contact/ContactOrbit";
 import { Footer } from "@/components/footer/Footer";
+import { MoonlightCanvas } from "@/components/ambient/MoonlightCanvas";
 
 export default function Home() {
   return (
-    <div className="w-full bg-[#03040A] text-[#E6E6F1] overflow-x-hidden min-h-screen">
+    <div className="w-full text-[#E6E6F1] overflow-x-hidden min-h-screen relative">
+      {/* Global starfield background */}
+      <MoonlightCanvas />
+
       {/* 1. Header / Navbar with Moon Logo */}
       <Navbar />
 

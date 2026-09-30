@@ -1,11 +1,9 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
-import { ArrowUp } from "lucide-react";
+import Image from "next/image";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
-import { GithubIcon, LinkedinIcon, InstagramIcon } from "@/components/icons/SocialIcons";
-import { Container } from "@/components/ui/Container";
+import { ArrowUp } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -18,93 +16,94 @@ export function Footer() {
     { label: "About", href: "#about" },
     { label: "Skills", href: "#skills" },
     { label: "Projects", href: "#projects" },
-    { label: "Journey", href: "#journey" },
     { label: "Contact", href: "#contact" },
   ];
 
+  const socialLinks = [
+    { label: "GitHub", href: PORTFOLIO_DATA.personal.socialLinks.github },
+    { label: "LinkedIn", href: PORTFOLIO_DATA.personal.socialLinks.linkedin },
+    { label: "Instagram", href: PORTFOLIO_DATA.personal.socialLinks.instagram },
+  ];
+
   return (
-    <footer className="border-t border-surface-border bg-night-950 py-12 relative z-10 text-starlight-muted">
-      <Container size="wide">
-        {/* Main Footer Row */}
-        <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-8 pb-10 border-b border-surface-border">
+    <footer className="relative border-t border-[#3F4454]/40 py-10 z-10">
+      <div className="max-w-[1300px] mx-auto px-5 sm:px-8 md:px-12 xl:px-24">
+        
+        {/* Top Row: Brand & Links */}
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
           
-          {/* Identity & Positioning */}
-          <div className="space-y-2 text-center md:text-left">
-            <Link 
-              href="#" 
-              className="text-base font-bold tracking-wider uppercase text-starlight-primary hover:text-white transition-colors font-mono inline-block"
-            >
-              PARTHIBAN V
-            </Link>
-            <p className="text-xs sm:text-sm text-starlight-secondary font-medium tracking-tight">
-              AI Engineering • Full-Stack Development • Building Real-World Solutions
-            </p>
-          </div>
-
-          {/* Navigation Links */}
-          <nav className="flex flex-wrap items-center justify-center gap-6 text-xs font-mono">
-            {navLinks.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="text-starlight-secondary hover:text-moon-accent transition-colors"
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-
-          {/* Social Links */}
+          {/* Left: Brand */}
           <div className="flex items-center gap-4">
-            <a
-              href={PORTFOLIO_DATA.personal.socialLinks.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-9 h-9 rounded-lg bg-surface-2 hover:bg-surface-3 border border-surface-border hover:border-white/20 text-starlight-secondary hover:text-white transition-colors flex items-center justify-center"
-              aria-label="GitHub Profile"
-            >
-              <GithubIcon className="w-4 h-4" />
-            </a>
-
-            <a
-              href={PORTFOLIO_DATA.personal.socialLinks.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-9 h-9 rounded-lg bg-surface-2 hover:bg-surface-3 border border-surface-border hover:border-white/20 text-starlight-secondary hover:text-white transition-colors flex items-center justify-center"
-              aria-label="LinkedIn Profile"
-            >
-              <LinkedinIcon className="w-4 h-4" />
-            </a>
-
-            <a
-              href={PORTFOLIO_DATA.personal.socialLinks.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-9 h-9 rounded-lg bg-surface-2 hover:bg-surface-3 border border-surface-border hover:border-white/20 text-starlight-secondary hover:text-white transition-colors flex items-center justify-center"
-              aria-label="Instagram Profile"
-            >
-              <InstagramIcon className="w-4 h-4" />
-            </a>
+            <div className="relative w-[52px] h-[52px]">
+              <Image
+                src="/images/moon1.png"
+                alt="Moon"
+                fill
+                className="object-contain"
+              />
+            </div>
+            <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+              <h2 className="text-[#E6E6F1] text-xl md:text-2xl font-bold tracking-wide">
+                PARTHIBAN V
+              </h2>
+              <p className="text-[#81859C] text-xs font-semibold tracking-wider uppercase mt-1">
+                AI Engineering • Full-Stack
+              </p>
+            </div>
           </div>
 
+          {/* Right: Navigation & Socials */}
+          <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10">
+            {/* Nav */}
+            <nav className="flex flex-wrap justify-center gap-6 text-sm font-medium">
+              {navLinks.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="text-[#B0B3C5] hover:text-[#FFEDC2] transition-colors duration-200"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+            
+            {/* Divider (Hidden on mobile) */}
+            <div className="hidden md:block w-px h-5 bg-[#3F4454]/60"></div>
+
+            {/* Socials */}
+            <div className="flex justify-center gap-6 text-sm font-medium">
+              {socialLinks.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#B0B3C5] hover:text-[#FFEDC2] transition-colors duration-200"
+                >
+                  {s.label}
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
 
-        {/* Bottom Minimal Copyright & Return to Top */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-starlight-muted">
-          <div>
-            © {currentYear} Parthiban V. All rights reserved.
-          </div>
+        {/* Divider */}
+        <div className="mt-10 border-t border-[#3F4454]/30" />
 
+        {/* Bottom Row */}
+        <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[13px] text-[#4B5066] font-medium tracking-wide">
+          <p>© {currentYear} Parthiban V. All rights reserved.</p>
           <button
             onClick={scrollToTop}
-            className="flex items-center gap-1.5 hover:text-starlight-primary transition-colors focus:outline-none"
+            className="flex items-center gap-2 hover:text-[#B0B3C5] transition-colors duration-200 cursor-pointer"
             aria-label="Back to top"
           >
             <span>Back to top</span>
             <ArrowUp className="w-3.5 h-3.5" />
           </button>
         </div>
-      </Container>
+
+      </div>
     </footer>
   );
 }
