@@ -2,7 +2,7 @@
 
 A cinematic dark personal portfolio website designed with a subtle moonlight night atmosphere, showcasing autonomous AI agent engineering, full-stack systems, and rapid hackathon prototypes.
 
-**Live URL**: [https://parthiban.dev](https://parthiban.dev) *(configurable)*  
+**Live URL**: [https://portfolio-parthi.vercel.app](https://portfolio-parthi.vercel.app) *(configurable)*  
 **Portfolio Repository**: [github.com/parthiban-dot/portfolio](https://github.com/parthiban-dot/portfolio)
 
 ---
