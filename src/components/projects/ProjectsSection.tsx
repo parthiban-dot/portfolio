@@ -26,9 +26,7 @@ export function ProjectsSection() {
       action: "link",
       url: "https://github.com/shv2312/HostelHub",
       visual: (
-        <div className="relative w-full aspect-[4/3] rounded-md overflow-hidden border border-[#3F4454] shadow-xl shadow-black/40">
-          <Image src="/images/hostelhub.jpg" alt="HostelHub" fill className="object-cover object-top" />
-        </div>
+        <Image src="/images/hostelhub.jpg" alt="HostelHub" fill className="object-cover object-top" />
       ),
     },
     {
@@ -46,9 +44,7 @@ export function ProjectsSection() {
       action: "link",
       url: "https://dracarysweb.vercel.app/",
       visual: (
-        <div className="relative w-full aspect-[4/3] rounded-md overflow-hidden border border-[#3F4454] shadow-xl shadow-black/40">
-          <Image src="/images/dracarys.jpg" alt="DRACARYS" fill className="object-cover object-top" />
-        </div>
+        <Image src="/images/dracarys.jpg" alt="DRACARYS" fill className="object-cover object-top" />
       ),
     },
     {
@@ -65,7 +61,11 @@ export function ProjectsSection() {
       buttonText: "GitHub Repository",
       action: "link",
       url: "https://github.com/parthiban-dot",
-      visual: <CollegiateLabVisual />,
+      visual: (
+        <div className="w-full max-w-md p-6">
+          <CollegiateLabVisual />
+        </div>
+      ),
     },
   ];
 
@@ -108,8 +108,8 @@ export function ProjectsSection() {
             variants={cardVariants}
           >
             {/* Left: Visual / Illustration Container */}
-            <div className="w-full lg:w-[500px] xl:w-[525px] h-[260px] sm:h-[300px] lg:h-[480px] relative p-4 lg:p-6 flex justify-center items-center bg-[#070911] border-b lg:border-b-0 lg:border-r border-[#3F4454]/60">
-              <div className="w-full max-w-md transform group-hover:scale-[1.02] transition-transform duration-300">
+            <div className="w-full lg:w-[500px] xl:w-[525px] h-[260px] sm:h-[300px] lg:h-[480px] relative bg-[#070911] border-b lg:border-b-0 lg:border-r border-[#3F4454]/60 overflow-hidden">
+              <div className="w-full h-full flex justify-center items-center transform group-hover:scale-[1.02] transition-transform duration-500">
                 {proj.visual}
               </div>
             </div>
