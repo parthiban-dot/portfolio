@@ -68,7 +68,7 @@ export function TechStackOrbit() {
 
 
         {/* Center Rotating Moon */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none flex items-center justify-center">
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none flex items-center justify-center drop-shadow-[0_0_20px_rgba(255,255,255,0.1)]">
           <div
             style={{
               width: `${centerSize}px`,
@@ -83,7 +83,7 @@ export function TechStackOrbit() {
               alt="Moon"
               width={centerSize}
               height={centerSize}
-              className="object-cover w-full h-full select-none pointer-events-none"
+              className="object-cover w-full h-full select-none pointer-events-none brightness-125 contrast-110"
               priority
             />
           </div>
