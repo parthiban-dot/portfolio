@@ -62,7 +62,7 @@ export function ProjectsSection() {
       action: "link",
       url: "https://github.com/parthiban-dot",
       visual: (
-        <Image src="/images/sietbgv.jpg" alt="SIET BGV Portal" fill className="object-cover object-center" />
+        <Image src="/images/sietbgv.jpg" alt="SIET BGV Portal" fill className="object-contain object-center p-4" />
       ),
     },
   ];
