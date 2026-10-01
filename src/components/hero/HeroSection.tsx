@@ -24,11 +24,14 @@ export function HeroSection() {
     },
   };
 
-  const scrollToContact = () => {
-    const el = document.getElementById("contact");
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
+  const handleContactClick = () => {
+    const email = "vinayagamparthiban07@gmail.com";
+    const subject = encodeURIComponent("Hello Parthiban!");
+    const body = encodeURIComponent("Hi Parthiban,\n\nI came across your portfolio and would love to connect.");
+    
+    // Direct Gmail web compose link
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`;
+    window.open(gmailUrl, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -62,7 +65,7 @@ export function HeroSection() {
 
         <motion.button
           variants={itemVariants}
-          onClick={scrollToContact}
+          onClick={handleContactClick}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           className="mt-12 px-7 py-3 bg-[#FFDFAF] text-[#03040A] font-medium text-base leading-6 tracking-[0.05em] hover:bg-[#FFEDC2] transition duration-300 cursor-pointer"
