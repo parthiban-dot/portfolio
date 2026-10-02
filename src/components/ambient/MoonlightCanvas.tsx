@@ -52,7 +52,7 @@ export function MoonlightCanvas() {
           alpha,
           targetAlpha: alpha,
           twinkleSpeed: Math.random() * 0.01 + 0.005,
-          vy: Math.random() * 0.3 + 0.1, // Drift upwards
+          vy: Math.random() * 0.8 + 0.3, // Faster drift upwards
         });
       }
     };
