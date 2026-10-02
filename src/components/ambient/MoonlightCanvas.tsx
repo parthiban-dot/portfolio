@@ -12,8 +12,7 @@ export function MoonlightCanvas() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    // Check prefers-reduced-motion
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    // Removed prefers-reduced-motion check to guarantee animation plays
 
     let animationFrameId: number;
     let width = (canvas.width = window.innerWidth);
@@ -65,19 +64,17 @@ export function MoonlightCanvas() {
       for (let i = 0; i < stars.length; i++) {
         const star = stars[i];
 
-        if (!prefersReducedMotion) {
-          // Twinkle logic
-          star.alpha += (star.targetAlpha - star.alpha) * star.twinkleSpeed;
-          if (Math.abs(star.targetAlpha - star.alpha) < 0.05) {
-            star.targetAlpha = Math.random() * 0.8 + 0.2;
-          }
+        // Twinkle logic
+        star.alpha += (star.targetAlpha - star.alpha) * star.twinkleSpeed;
+        if (Math.abs(star.targetAlpha - star.alpha) < 0.05) {
+          star.targetAlpha = Math.random() * 0.8 + 0.2;
+        }
 
-          // Move stars upwards
-          star.y -= star.vy;
-          if (star.y < 0) {
-            star.y = height;
-            star.x = Math.random() * width;
-          }
+        // Move stars upwards
+        star.y -= star.vy;
+        if (star.y < 0) {
+          star.y = height;
+          star.x = Math.random() * width;
         }
 
         ctx.beginPath();
@@ -93,9 +90,7 @@ export function MoonlightCanvas() {
         ctx.fill();
       }
 
-      if (!prefersReducedMotion) {
-        animationFrameId = requestAnimationFrame(render);
-      }
+      animationFrameId = requestAnimationFrame(render);
     };
 
     render();
