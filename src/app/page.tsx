@@ -22,7 +22,7 @@ export default function Home() {
       {isDayMode ? (
         <div className="fixed inset-0 z-0 pointer-events-none transition-opacity duration-1000 opacity-100">
           <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40 animate-clouds-drift" 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-80 animate-clouds-drift" 
             style={{ backgroundImage: "url('https://images.unsplash.com/photo-1499346030926-9a72daac6c63?q=80&w=3000&auto=format&fit=crop')" }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#0a1128]/80 via-[#0a1128]/50 to-[#0a1128]/90" />
