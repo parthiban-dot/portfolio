@@ -5,7 +5,11 @@ import Image from "next/image";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
 import { ArrowUp } from "lucide-react";
 
-export function Footer() {
+interface FooterProps {
+  isDayMode?: boolean;
+}
+
+export function Footer({ isDayMode }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   const scrollToTop = () => {
@@ -35,12 +39,16 @@ export function Footer() {
           {/* Left: Brand */}
           <div className="flex items-center gap-4">
             <div className="relative w-[52px] h-[52px]">
-              <Image
-                src="/images/moon1.png"
-                alt="Moon"
-                fill
-                className="object-contain"
-              />
+              {isDayMode ? (
+                <div className="w-full h-full rounded-full bg-gradient-to-tr from-[#FFB347] to-[#FFDFAF] shadow-[0_0_20px_rgba(255,223,175,0.6),_inset_0_0_10px_rgba(255,255,255,0.8)]" />
+              ) : (
+                <Image
+                  src="/images/moon1.png"
+                  alt="Moon"
+                  fill
+                  className="object-contain"
+                />
+              )}
             </div>
             <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
               <h2 className="text-[#E6E6F1] text-xl md:text-2xl font-bold tracking-wide">

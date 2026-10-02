@@ -4,7 +4,12 @@ import React from "react";
 import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
 
-export function Navbar() {
+interface NavbarProps {
+  isDayMode?: boolean;
+  toggleDayMode?: () => void;
+}
+
+export function Navbar({ isDayMode, toggleDayMode }: NavbarProps) {
   const navVariants: Variants = {
     hidden: { opacity: 0, y: -30 },
     show: {
@@ -25,15 +30,23 @@ export function Navbar() {
         PARTHIBAN
       </h3>
 
-      <div className="absolute top-0 right-0 p-2 sm:p-3 md:p-4 w-[70px] h-[64px] sm:w-[90px] sm:h-[81px] md:w-[120px] md:h-[108px]">
-        <Image
-          src="/images/moon1.png"
-          alt="Moon Logo"
-          fill
-          priority
-          sizes="(max-width: 768px) 90px, 120px"
-          className="object-contain"
-        />
+      <div 
+        onClick={toggleDayMode}
+        className="absolute top-2 right-4 p-2 sm:p-3 md:p-4 w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] md:w-[90px] md:h-[90px] cursor-pointer group"
+        title="Toggle Day/Night Mode"
+      >
+        {isDayMode ? (
+          <div className="w-full h-full rounded-full bg-gradient-to-tr from-[#FFB347] to-[#FFDFAF] shadow-[0_0_30px_rgba(255,223,175,0.6),_inset_0_0_15px_rgba(255,255,255,0.8)] transition-all duration-700 group-hover:scale-110 group-hover:shadow-[0_0_50px_rgba(255,223,175,0.9)]" />
+        ) : (
+          <Image
+            src="/images/moon1.png"
+            alt="Moon Logo"
+            fill
+            priority
+            sizes="(max-width: 768px) 80px, 90px"
+            className="object-contain transition-all duration-700 group-hover:scale-110 group-hover:brightness-125 group-hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+          />
+        )}
       </div>
     </motion.nav>
   );

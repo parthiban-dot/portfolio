@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Navbar } from "@/components/navigation/Navbar";
 import { HeroSection } from "@/components/hero/HeroSection";
 import { AboutSection } from "@/components/about/AboutSection";
@@ -11,34 +11,40 @@ import { Footer } from "@/components/footer/Footer";
 import { MoonlightCanvas } from "@/components/ambient/MoonlightCanvas";
 
 export default function Home() {
-  return (
-    <div className="w-full text-[#E6E6F1] overflow-x-hidden min-h-screen relative">
-      {/* Global starfield background */}
-      <MoonlightCanvas />
+  const [isDayMode, setIsDayMode] = useState(false);
 
-      {/* 1. Header / Navbar with Moon Logo */}
-      <Navbar />
+  const toggleDayMode = () => setIsDayMode(!isDayMode);
+
+  return (
+    <div className={`w-full text-[#E6E6F1] overflow-x-hidden min-h-screen relative transition-colors duration-1000 ${isDayMode ? 'bg-[#0a1128]' : 'bg-[#03040A]'}`}>
+      
+      {/* Background Layer */}
+      {isDayMode ? (
+        <div className="fixed inset-0 z-0 pointer-events-none transition-opacity duration-1000 opacity-100">
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40" 
+            style={{ backgroundImage: "url('https://images.unsplash.com/photo-1499346030926-9a72daac6c63?q=80&w=3000&auto=format&fit=crop')" }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a1128]/80 via-[#0a1128]/50 to-[#0a1128]/90" />
+        </div>
+      ) : (
+        <MoonlightCanvas />
+      )}
+
+      {/* 1. Header / Navbar with Toggle */}
+      <Navbar isDayMode={isDayMode} toggleDayMode={toggleDayMode} />
 
       {/* 2. Main Page Content */}
-      <main className="w-full">
-        {/* Hero Section */}
+      <main className="w-full relative z-10">
         <HeroSection />
-
-        {/* About Me Section */}
         <AboutSection />
-
-        {/* My Tech Stack in Orbit */}
-        <TechStackOrbit />
-
-        {/* Crafted in the Moonlight Projects */}
+        <TechStackOrbit isDayMode={isDayMode} />
         <ProjectsSection />
-
-        {/* Reach Me from Earth Contact Orbit */}
         <ContactOrbit />
       </main>
 
       {/* 3. Footer */}
-      <Footer />
+      <Footer isDayMode={isDayMode} />
     </div>
   );
 }

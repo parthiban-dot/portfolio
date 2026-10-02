@@ -8,7 +8,11 @@ interface OrbitItem {
   icon: string;
 }
 
-export function TechStackOrbit() {
+interface TechStackOrbitProps {
+  isDayMode?: boolean;
+}
+
+export function TechStackOrbit({ isDayMode }: TechStackOrbitProps) {
   const [windowWidth, setWindowWidth] = useState<number | null>(null);
 
   useEffect(() => {
@@ -67,7 +71,7 @@ export function TechStackOrbit() {
 
 
 
-        {/* Center Rotating Moon */}
+        {/* Center Rotating Moon / Sun */}
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none flex items-center justify-center drop-shadow-[0_0_20px_rgba(255,255,255,0.1)]">
           <div
             style={{
@@ -78,14 +82,18 @@ export function TechStackOrbit() {
             }}
             className="rounded-full overflow-hidden pointer-events-none"
           >
-            <Image
-              src="/images/real.png"
-              alt="Moon"
-              width={centerSize}
-              height={centerSize}
-              className="object-cover w-full h-full select-none pointer-events-none brightness-125 contrast-110"
-              priority
-            />
+            {isDayMode ? (
+              <div className="w-full h-full rounded-full bg-gradient-to-tr from-[#FFB347] to-[#FFDFAF] shadow-[0_0_60px_rgba(255,223,175,0.8),_inset_0_0_30px_rgba(255,255,255,1)]" />
+            ) : (
+              <Image
+                src="/images/real.png"
+                alt="Moon"
+                width={centerSize}
+                height={centerSize}
+                className="object-cover w-full h-full select-none pointer-events-none brightness-125 contrast-110"
+                priority
+              />
+            )}
           </div>
         </div>
 
