@@ -106,9 +106,29 @@ export function ProjectsSection() {
             variants={cardVariants}
           >
             {/* Left: Visual / Illustration Container */}
-            <div className="w-full lg:w-[500px] xl:w-[525px] h-[260px] sm:h-[300px] lg:h-[480px] relative bg-[#070911] border-b lg:border-b-0 lg:border-r border-[#3F4454]/60 overflow-hidden">
-              <div className="w-full h-full flex justify-center items-center transform group-hover:scale-[1.02] transition-transform duration-500">
+            <div className="w-full lg:w-[500px] xl:w-[525px] h-[260px] sm:h-[300px] lg:h-[480px] relative bg-[#070911] border-b lg:border-b-0 lg:border-r border-[#3F4454]/60 overflow-hidden group/image">
+              <div className="w-full h-full flex justify-center items-center transform group-hover/image:scale-110 transition-transform duration-700 ease-out">
                 {proj.visual}
+              </div>
+              
+              {/* Interactive Glassmorphic Overlay */}
+              <div className="absolute inset-0 bg-[#03040A]/60 backdrop-blur-[4px] opacity-0 group-hover/image:opacity-100 transition-all duration-500 flex flex-col items-center justify-center pointer-events-none">
+                <div className="translate-y-8 group-hover/image:translate-y-0 transition-transform duration-500 ease-out pointer-events-auto">
+                  {proj.action === "modal" ? (
+                    <button
+                      onClick={() => setActiveProject(proj.data)}
+                      className="px-6 py-3 rounded-full bg-white/10 border border-white/20 text-[#E6E6F1] font-semibold tracking-wide hover:bg-white/20 hover:scale-105 transition-all duration-300"
+                    >
+                      View Details
+                    </button>
+                  ) : (
+                    <a href={proj.url} target="_blank" rel="noopener noreferrer">
+                      <button className="px-6 py-3 rounded-full bg-white/10 border border-white/20 text-[#E6E6F1] font-semibold tracking-wide hover:bg-white/20 hover:scale-105 transition-all duration-300">
+                        {proj.buttonText}
+                      </button>
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
 

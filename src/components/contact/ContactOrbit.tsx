@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 interface ContactChannel {
   name: string;
@@ -68,12 +69,20 @@ export function ContactOrbit() {
 
   return (
     <section id="contact" className="flex flex-col items-center pt-24 pb-16 w-full relative min-h-screen">
-      <h2 className="text-[#E6E6F1] text-2xl md:text-4xl font-bold text-center">
-        Reach Me from Earth
-      </h2>
-      <p className="mt-4 text-[#FFEDC2] text-sm md:text-lg text-center px-4 max-w-xl">
-        No matter where you are, your signal will always find me.
-      </p>
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="flex flex-col items-center"
+      >
+        <h2 className="text-[#E6E6F1] text-2xl md:text-4xl font-bold text-center">
+          Reach Me from Earth
+        </h2>
+        <p className="mt-4 text-[#FFEDC2] text-sm md:text-lg text-center px-4 max-w-xl">
+          No matter where you are, your signal will always find me.
+        </p>
+      </motion.div>
 
       <div className="relative w-full flex-1 mt-12 sm:mt-16 xl:mt-20 min-h-[520px] sm:min-h-[700px] md:min-h-[900px]">
         
