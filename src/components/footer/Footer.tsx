@@ -40,15 +40,15 @@ export function Footer({ isDayMode }: FooterProps) {
           <div className="flex items-center gap-4">
             <div className="relative w-[52px] h-[52px] flex items-center justify-center">
               {isDayMode ? (
-                <div className="absolute inset-[-50%] pointer-events-none mix-blend-screen flex items-center justify-center">
+                <div className="absolute inset-[-15%] pointer-events-none mix-blend-screen flex items-center justify-center">
                   <Image
                     src="/images/sun.jpg"
                     alt="Sun"
                     fill
                     className="object-cover"
                     style={{
-                      WebkitMaskImage: "radial-gradient(circle at center, black 35%, transparent 65%)",
-                      maskImage: "radial-gradient(circle at center, black 35%, transparent 65%)"
+                      WebkitMaskImage: "radial-gradient(circle at center, black 35%, transparent 60%)",
+                      maskImage: "radial-gradient(circle at center, black 35%, transparent 60%)"
                     }}
                   />
                 </div>
