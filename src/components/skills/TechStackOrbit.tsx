@@ -72,7 +72,7 @@ export function TechStackOrbit({ isDayMode }: TechStackOrbitProps) {
 
 
         {/* Center Rotating Moon / Sun */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none flex items-center justify-center drop-shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none flex items-center justify-center">
           <div
             style={{
               width: `${centerSize}px`,
@@ -86,10 +86,15 @@ export function TechStackOrbit({ isDayMode }: TechStackOrbitProps) {
               <Image
                 src="/images/sun.jpg"
                 alt="Sun"
-                width={centerSize * 1.8}
-                height={centerSize * 1.8}
+                width={centerSize * 2.2}
+                height={centerSize * 2.2}
                 className="object-cover max-w-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 mix-blend-screen select-none pointer-events-none"
-                style={{ width: `${centerSize * 1.8}px`, height: `${centerSize * 1.8}px` }}
+                style={{ 
+                  width: `${centerSize * 2.2}px`, 
+                  height: `${centerSize * 2.2}px`,
+                  WebkitMaskImage: "radial-gradient(circle at center, black 35%, transparent 65%)",
+                  maskImage: "radial-gradient(circle at center, black 35%, transparent 65%)"
+                }}
                 priority
               />
             ) : (
@@ -98,7 +103,7 @@ export function TechStackOrbit({ isDayMode }: TechStackOrbitProps) {
                 alt="Moon"
                 width={centerSize}
                 height={centerSize}
-                className="object-cover w-full h-full select-none pointer-events-none brightness-125 contrast-110"
+                className="object-cover w-full h-full select-none pointer-events-none brightness-125 contrast-110 drop-shadow-[0_0_20px_rgba(255,255,255,0.1)]"
                 priority
               />
             )}

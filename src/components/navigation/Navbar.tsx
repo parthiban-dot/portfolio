@@ -36,14 +36,20 @@ export function Navbar({ isDayMode, toggleDayMode }: NavbarProps) {
         title="Toggle Day/Night Mode"
       >
         {isDayMode ? (
-          <Image
-            src="/images/sun.jpg"
-            alt="Sun Logo"
-            fill
-            priority
-            sizes="(max-width: 768px) 80px, 90px"
-            className="object-cover mix-blend-screen transition-all duration-700 group-hover:scale-125"
-          />
+          <div className="absolute inset-[-40%] pointer-events-none mix-blend-screen flex items-center justify-center transition-transform duration-700 group-hover:scale-110">
+            <Image
+              src="/images/sun.jpg"
+              alt="Sun Logo"
+              fill
+              priority
+              sizes="120px"
+              className="object-cover"
+              style={{
+                WebkitMaskImage: "radial-gradient(circle at center, black 35%, transparent 65%)",
+                maskImage: "radial-gradient(circle at center, black 35%, transparent 65%)"
+              }}
+            />
+          </div>
         ) : (
           <Image
             src="/images/moon1.png"
