@@ -7,7 +7,11 @@ import { ProjectDetailModal } from "./ProjectDetailModal";
 import { PORTFOLIO_DATA, Project } from "@/data/portfolioData";
 import { CollegiateLabVisual } from "./ProjectVisuals";
 
-export function ProjectsSection() {
+interface ProjectsSectionProps {
+  isDayMode?: boolean;
+}
+
+export function ProjectsSection({ isDayMode }: ProjectsSectionProps) {
   const [activeProject, setActiveProject] = useState<Project | null>(null);
 
   const projects = [
@@ -87,10 +91,10 @@ export function ProjectsSection() {
         variants={cardVariants}
       >
         <h2 className="text-[28px] sm:text-[32px] md:text-[36px] font-semibold leading-[38px] sm:leading-[40px] md:leading-[45px] tracking-[-0.02em] text-[#E6E6F1]">
-          <span>Crafted in the Moonlight</span>
+          <span>Crafted in the {isDayMode ? "Sunlight" : "Moonlight"}</span>
         </h2>
         <p className="mt-4 text-[14px] sm:text-[15px] md:text-[16px] leading-[22px] sm:leading-[24px] text-[#FFDFAF] mx-auto px-2 max-w-2xl">
-          <span>Three projects that showcase my dedication, creativity, and late-night focus — built to be both functional and beautiful.</span>
+          <span>Three projects that showcase my dedication, creativity, and {isDayMode ? "daytime" : "late-night"} focus — built to be both functional and beautiful.</span>
         </p>
       </motion.div>
 

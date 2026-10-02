@@ -41,7 +41,7 @@ export default function Home() {
         <HeroSection />
         <AboutSection />
         <TechStackOrbit isDayMode={isDayMode} />
-        <ProjectsSection />
+        <ProjectsSection isDayMode={isDayMode} />
         <ContactOrbit />
       </main>
 
