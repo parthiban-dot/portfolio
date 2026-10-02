@@ -9,7 +9,6 @@ import { ProjectsSection } from "@/components/projects/ProjectsSection";
 import { ContactOrbit } from "@/components/contact/ContactOrbit";
 import { Footer } from "@/components/footer/Footer";
 import { MoonlightCanvas } from "@/components/ambient/MoonlightCanvas";
-import { CustomCursor } from "@/components/ui/CustomCursor";
 
 export default function Home() {
   const [isDayMode, setIsDayMode] = useState(false);
@@ -17,8 +16,7 @@ export default function Home() {
   const toggleDayMode = () => setIsDayMode(!isDayMode);
 
   return (
-    <div className={`w-full text-[#E6E6F1] overflow-x-hidden min-h-screen relative transition-colors duration-1000 [&_*]:md:cursor-none ${isDayMode ? 'bg-[#0a1128]' : 'bg-[#03040A]'}`}>
-      <CustomCursor />
+    <div className={`w-full text-[#E6E6F1] overflow-x-hidden min-h-screen relative transition-colors duration-1000 ${isDayMode ? 'bg-[#0a1128]' : 'bg-[#03040A]'}`}>
       
       {/* Background Layer */}
       {isDayMode ? (
