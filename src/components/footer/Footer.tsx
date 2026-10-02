@@ -38,9 +38,15 @@ export function Footer({ isDayMode }: FooterProps) {
           
           {/* Left: Brand */}
           <div className="flex items-center gap-4">
-            <div className="relative w-[52px] h-[52px]">
+            <div className="relative w-[52px] h-[52px] flex items-center justify-center">
               {isDayMode ? (
-                <div className="w-full h-full rounded-full bg-gradient-to-tr from-[#FFB347] to-[#FFDFAF] shadow-[0_0_20px_rgba(255,223,175,0.6),_inset_0_0_10px_rgba(255,255,255,0.8)]" />
+                <Image
+                  src="/images/sun.jpg"
+                  alt="Sun"
+                  width={80}
+                  height={80}
+                  className="object-cover max-w-none mix-blend-screen absolute"
+                />
               ) : (
                 <Image
                   src="/images/moon1.png"

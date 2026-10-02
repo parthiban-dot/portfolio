@@ -80,10 +80,18 @@ export function TechStackOrbit({ isDayMode }: TechStackOrbitProps) {
               animation: "spinSlow 60s linear infinite",
               transformOrigin: "center center",
             }}
-            className="rounded-full overflow-hidden pointer-events-none"
+            className="rounded-full pointer-events-none relative flex items-center justify-center"
           >
             {isDayMode ? (
-              <div className="w-full h-full rounded-full bg-gradient-to-tr from-[#FFB347] to-[#FFDFAF] shadow-[0_0_60px_rgba(255,223,175,0.8),_inset_0_0_30px_rgba(255,255,255,1)]" />
+              <Image
+                src="/images/sun.jpg"
+                alt="Sun"
+                width={centerSize * 1.8}
+                height={centerSize * 1.8}
+                className="object-cover max-w-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 mix-blend-screen select-none pointer-events-none"
+                style={{ width: `${centerSize * 1.8}px`, height: `${centerSize * 1.8}px` }}
+                priority
+              />
             ) : (
               <Image
                 src="/images/real.png"

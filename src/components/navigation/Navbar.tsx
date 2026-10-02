@@ -36,7 +36,14 @@ export function Navbar({ isDayMode, toggleDayMode }: NavbarProps) {
         title="Toggle Day/Night Mode"
       >
         {isDayMode ? (
-          <div className="w-full h-full rounded-full bg-gradient-to-tr from-[#FFB347] to-[#FFDFAF] shadow-[0_0_30px_rgba(255,223,175,0.6),_inset_0_0_15px_rgba(255,255,255,0.8)] transition-all duration-700 group-hover:scale-110 group-hover:shadow-[0_0_50px_rgba(255,223,175,0.9)]" />
+          <Image
+            src="/images/sun.jpg"
+            alt="Sun Logo"
+            fill
+            priority
+            sizes="(max-width: 768px) 80px, 90px"
+            className="object-cover mix-blend-screen transition-all duration-700 group-hover:scale-125"
+          />
         ) : (
           <Image
             src="/images/moon1.png"
