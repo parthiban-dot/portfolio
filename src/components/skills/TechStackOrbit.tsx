@@ -86,14 +86,14 @@ export function TechStackOrbit({ isDayMode }: TechStackOrbitProps) {
               <Image
                 src="/images/sun.jpg"
                 alt="Sun"
-                width={centerSize * 1.55}
-                height={centerSize * 1.55}
+                width={centerSize * 1.5}
+                height={centerSize * 1.5}
                 className="object-cover max-w-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 mix-blend-screen select-none pointer-events-none"
                 style={{ 
-                  width: `${centerSize * 1.55}px`, 
-                  height: `${centerSize * 1.55}px`,
-                  WebkitMaskImage: "radial-gradient(circle at center, black 35%, transparent 60%)",
-                  maskImage: "radial-gradient(circle at center, black 35%, transparent 60%)"
+                  width: `${centerSize * 1.5}px`, 
+                  height: `${centerSize * 1.5}px`,
+                  WebkitMaskImage: "radial-gradient(circle at center, black 46%, transparent 49%)",
+                  maskImage: "radial-gradient(circle at center, black 46%, transparent 49%)"
                 }}
                 priority
               />

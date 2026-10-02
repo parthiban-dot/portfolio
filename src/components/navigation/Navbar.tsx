@@ -36,7 +36,7 @@ export function Navbar({ isDayMode, toggleDayMode }: NavbarProps) {
         title="Toggle Day/Night Mode"
       >
         {isDayMode ? (
-          <div className="absolute inset-[-15%] pointer-events-none mix-blend-screen flex items-center justify-center transition-transform duration-700 group-hover:scale-110">
+          <div className="absolute inset-[0%] pointer-events-none mix-blend-screen flex items-center justify-center transition-transform duration-700 group-hover:scale-110">
             <Image
               src="/images/sun.jpg"
               alt="Sun Logo"
@@ -45,8 +45,9 @@ export function Navbar({ isDayMode, toggleDayMode }: NavbarProps) {
               sizes="120px"
               className="object-cover"
               style={{
-                WebkitMaskImage: "radial-gradient(circle at center, black 35%, transparent 60%)",
-                maskImage: "radial-gradient(circle at center, black 35%, transparent 60%)"
+                WebkitMaskImage: "radial-gradient(circle at center, black 46%, transparent 49%)",
+                maskImage: "radial-gradient(circle at center, black 46%, transparent 49%)",
+                transform: "scale(1.5)"
               }}
             />
           </div>
