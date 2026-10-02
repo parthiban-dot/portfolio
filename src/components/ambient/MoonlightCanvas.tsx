@@ -34,23 +34,25 @@ export function MoonlightCanvas() {
       radius: number;
       alpha: number;
       targetAlpha: number;
-      speed: number;
+      twinkleSpeed: number;
+      vy: number; // Vertical velocity
     }
 
     let stars: Star[] = [];
 
     const initStars = () => {
       stars = [];
-      const starCount = Math.floor((width * height) / 8000); // Gentle density
+      const starCount = Math.floor((width * height) / 4000); // Higher density
       for (let i = 0; i < starCount; i++) {
-        const alpha = Math.random() * 0.7 + 0.15;
+        const alpha = Math.random() * 0.8 + 0.2;
         stars.push({
           x: Math.random() * width,
           y: Math.random() * height,
-          radius: Math.random() * 1.1 + 0.4,
+          radius: Math.random() * 1.5 + 0.5,
           alpha,
           targetAlpha: alpha,
-          speed: Math.random() * 0.005 + 0.002,
+          twinkleSpeed: Math.random() * 0.01 + 0.005,
+          vy: Math.random() * 0.3 + 0.1, // Drift upwards
         });
       }
     };
@@ -60,21 +62,34 @@ export function MoonlightCanvas() {
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Render subtle stars
       for (let i = 0; i < stars.length; i++) {
         const star = stars[i];
 
         if (!prefersReducedMotion) {
           // Twinkle logic
-          star.alpha += (star.targetAlpha - star.alpha) * star.speed;
-          if (Math.abs(star.targetAlpha - star.alpha) < 0.03) {
-            star.targetAlpha = Math.random() * 0.7 + 0.15;
+          star.alpha += (star.targetAlpha - star.alpha) * star.twinkleSpeed;
+          if (Math.abs(star.targetAlpha - star.alpha) < 0.05) {
+            star.targetAlpha = Math.random() * 0.8 + 0.2;
+          }
+
+          // Move stars upwards
+          star.y -= star.vy;
+          if (star.y < 0) {
+            star.y = height;
+            star.x = Math.random() * width;
           }
         }
 
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(226, 232, 255, ${star.alpha.toFixed(3)})`;
+        ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha.toFixed(3)})`;
+        // Add a subtle glow to larger stars
+        if (star.radius > 1.2) {
+          ctx.shadowBlur = 4;
+          ctx.shadowColor = "rgba(255, 255, 255, 0.8)";
+        } else {
+          ctx.shadowBlur = 0;
+        }
         ctx.fill();
       }
 
@@ -94,7 +109,7 @@ export function MoonlightCanvas() {
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
       {/* Dynamic Starfield Canvas */}
-      <canvas ref={canvasRef} className="absolute inset-0 block w-full h-full opacity-60" />
+      <canvas ref={canvasRef} className="absolute inset-0 block w-full h-full opacity-100" />
 
       {/* Atmospheric Lunar Glow Gradients */}
       <div 
