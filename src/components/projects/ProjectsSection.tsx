@@ -51,6 +51,7 @@ export function ProjectsSection({ isDayMode }: ProjectsSectionProps) {
         <Image src="/images/dracarys.jpg" alt="DRACARYS" fill className="object-cover object-center" />
       ),
     },
+    /* TEMPORARILY DISABLED PER USER REQUEST
     {
       data: PORTFOLIO_DATA.projects[2], // SIET BGV
       tagline: "Institutional platform for tamper-proof, automated academic credential verification.",
@@ -69,6 +70,7 @@ export function ProjectsSection({ isDayMode }: ProjectsSectionProps) {
         <Image src="/images/sietbgv.jpg" alt="SIET BGV Portal" fill className="object-cover object-center" />
       ),
     },
+    */
   ];
 
   const cardVariants: Variants = {
@@ -94,7 +96,7 @@ export function ProjectsSection({ isDayMode }: ProjectsSectionProps) {
           <span>Crafted in the {isDayMode ? "Sunlight" : "Moonlight"}</span>
         </h2>
         <p className="mt-4 text-[14px] sm:text-[15px] md:text-[16px] leading-[22px] sm:leading-[24px] text-[#FFDFAF] mx-auto px-2 max-w-2xl">
-          <span>Three projects that showcase my dedication, creativity, and {isDayMode ? "daytime" : "late-night"} focus — built to be both functional and beautiful.</span>
+          <span>A selection of projects that showcase my dedication, creativity, and {isDayMode ? "daytime" : "late-night"} focus — built to be both functional and beautiful.</span>
         </p>
       </motion.div>
 
