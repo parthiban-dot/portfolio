@@ -29,9 +29,8 @@ export function HeroSection() {
     const subject = encodeURIComponent("Hello Parthiban!");
     const body = encodeURIComponent("Hi Parthiban,\n\nI came across your portfolio and would love to connect.");
     
-    // Direct Gmail web compose link
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`;
-    window.open(gmailUrl, "_blank", "noopener,noreferrer");
+    // Direct default email client link
+    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
   };
 
   return (

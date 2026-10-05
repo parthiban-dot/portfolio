@@ -38,15 +38,6 @@ export function ContactOrbit() {
     const subject = encodeURIComponent("Hello Parthiban!");
     const body = encodeURIComponent("Hi Parthiban,\n\nI came across your portfolio and would love to connect about a project or collaboration.");
 
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    const isChrome = !isMobile && navigator.userAgent.includes("Chrome") && !navigator.userAgent.includes("Edge");
-
-    if (isChrome) {
-      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`;
-      window.open(gmailUrl, "_blank");
-      return;
-    }
-
     window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
   };
 
