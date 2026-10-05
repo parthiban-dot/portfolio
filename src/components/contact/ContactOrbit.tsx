@@ -38,7 +38,8 @@ export function ContactOrbit() {
     const subject = encodeURIComponent("Hello Parthiban!");
     const body = encodeURIComponent("Hi Parthiban,\n\nI came across your portfolio and would love to connect about a project or collaboration.");
 
-    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`;
+    window.open(gmailUrl, "_blank", "noopener,noreferrer");
   };
 
   if (windowWidth === null) return null;
