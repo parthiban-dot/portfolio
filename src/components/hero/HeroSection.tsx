@@ -64,7 +64,7 @@ export function HeroSection() {
           className="mt-9 text-[#FFEDC2] text-lg sm:text-2xl md:text-4xl font-semibold px-2 sm:px-0 leading-normal"
         >
           The developer who brings{" "}
-          <span className="relative inline-flex justify-center items-center min-w-[90px] sm:min-w-[120px] md:min-w-[150px] overflow-hidden h-[1.2em] text-white align-bottom -mb-[0.1em]">
+          <span className="relative inline-flex justify-center items-center min-w-[90px] sm:min-w-[120px] md:min-w-[150px] overflow-hidden h-[1.2em] align-bottom -mb-[0.1em] text-[#00E5FF] drop-shadow-[0_0_12px_rgba(0,229,255,0.8)]">
             <AnimatePresence>
               <motion.span
                 key={words[wordIndex]}
