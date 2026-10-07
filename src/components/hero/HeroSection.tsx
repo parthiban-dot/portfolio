@@ -64,14 +64,14 @@ export function HeroSection() {
           className="mt-9 text-[#FFEDC2] text-lg sm:text-2xl md:text-4xl font-semibold px-2 sm:px-0 leading-normal"
         >
           The developer who brings{" "}
-          <span className="relative inline-flex justify-center items-center min-w-[90px] sm:min-w-[120px] md:min-w-[150px] overflow-hidden h-[1.2em] text-[#A18AFF] align-bottom -mb-[0.1em]">
-            <AnimatePresence mode="wait">
+          <span className="relative inline-flex justify-center items-center min-w-[90px] sm:min-w-[120px] md:min-w-[150px] overflow-hidden h-[1.2em] text-white align-bottom -mb-[0.1em]">
+            <AnimatePresence>
               <motion.span
                 key={words[wordIndex]}
-                initial={{ y: 40, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -40, opacity: 0 }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
+                initial={{ y: "100%", opacity: 0, rotateX: -90 }}
+                animate={{ y: 0, opacity: 1, rotateX: 0 }}
+                exit={{ y: "-100%", opacity: 0, rotateX: 90 }}
+                transition={{ duration: 0.6, type: "spring", stiffness: 100, damping: 15 }}
                 className="absolute"
               >
                 {words[wordIndex]}
