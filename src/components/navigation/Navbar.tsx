@@ -58,7 +58,7 @@ export function Navbar({ isDayMode, toggleDayMode }: NavbarProps) {
             fill
             priority
             sizes="(max-width: 768px) 80px, 90px"
-            className="object-contain transition-all duration-700 group-hover:scale-110 group-hover:brightness-125 group-hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+            className="object-contain transition-all duration-700 brightness-125 group-hover:scale-110 group-hover:brightness-150 group-hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]"
           />
         )}
       </div>

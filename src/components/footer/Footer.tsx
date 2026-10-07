@@ -58,7 +58,7 @@ export function Footer({ isDayMode }: FooterProps) {
                   src="/images/moon1.png"
                   alt="Moon"
                   fill
-                  className="object-contain"
+                  className="object-contain brightness-125"
                 />
               )}
             </div>

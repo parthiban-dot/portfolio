@@ -100,7 +100,7 @@ export function TechStackOrbit({ isDayMode }: TechStackOrbitProps) {
                 alt="Moon"
                 width={centerSize}
                 height={centerSize}
-                className="object-cover w-full h-full select-none pointer-events-none mix-blend-screen brightness-110"
+                className="object-cover w-full h-full select-none pointer-events-none mix-blend-screen brightness-[1.35] contrast-[1.1]"
                 style={{
                   WebkitMaskImage: "radial-gradient(circle at center, black 48%, transparent 50%)",
                   maskImage: "radial-gradient(circle at center, black 48%, transparent 50%)"
