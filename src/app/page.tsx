@@ -16,16 +16,25 @@ export default function Home() {
   const toggleDayMode = () => setIsDayMode(!isDayMode);
 
   return (
-    <div className={`w-full text-[#E6E6F1] overflow-x-hidden min-h-screen relative transition-colors duration-1000 ${isDayMode ? 'bg-[#0a1128]' : 'bg-[#03040A]'}`}>
+    <div className={`w-full text-[#E6E6F1] overflow-x-hidden min-h-screen relative transition-colors duration-1000 bg-[#03040A]`}>
       
       {/* Background Layer */}
       {isDayMode ? (
         <div className="fixed inset-0 z-0 pointer-events-none transition-opacity duration-1000 opacity-100">
+          {/* Base Twilight Gradient */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#2b1836] via-[#101223] to-[#03040A]" />
+          
+          {/* Sun / Dawn Glow */}
+          <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[80vw] h-[80vw] max-w-[1000px] max-h-[1000px] rounded-full blur-[120px] opacity-60 bg-[radial-gradient(circle,rgba(255,140,100,0.4)_0%,rgba(255,80,120,0.1)_40%,transparent_70%)]" />
+          
+          {/* Drifting Clouds Texture */}
           <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-80 animate-clouds-drift" 
-            style={{ backgroundImage: "url('https://images.unsplash.com/photo-1499346030926-9a72daac6c63?q=80&w=3000&auto=format&fit=crop')" }}
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40 animate-clouds-drift mix-blend-screen" 
+            style={{ backgroundImage: "url('https://images.unsplash.com/photo-1534081333815-b56cfcd8450c?q=80&w=3000&auto=format&fit=crop')" }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a1128]/80 via-[#0a1128]/50 to-[#0a1128]/90" />
+          
+          {/* Bottom Dark Vignette so text is always readable */}
+          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#03040A] to-transparent opacity-90" />
         </div>
       ) : (
         <MoonlightCanvas />
