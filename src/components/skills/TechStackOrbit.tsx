@@ -66,11 +66,13 @@ export function TechStackOrbit({ isDayMode }: TechStackOrbitProps) {
         From core programming languages to modern web frameworks, these are the technologies I orbit around every day.
       </p>
 
-      <div className="relative w-full flex-1 mt-12 sm:mt-16 xl:mt-20 min-h-[520px] sm:min-h-[700px] md:min-h-[900px]">
+      <div className="relative w-full flex-1 mt-12 sm:mt-16 xl:mt-20 min-h-[520px] sm:min-h-[700px] md:min-h-[900px] group/orbit">
+        <style>{`
+          .group\\/orbit:hover .orbit-anim {
+            animation-play-state: paused !important;
+          }
+        `}</style>
         
-
-
-
         {/* Center Rotating Moon / Sun */}
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none flex items-center justify-center">
           <div
@@ -113,7 +115,7 @@ export function TechStackOrbit({ isDayMode }: TechStackOrbitProps) {
         {/* Inner Orbit (30s) */}
         <div
           style={{ animation: "innerOrbit 30s linear infinite", transformOrigin: "0 0" }}
-          className="absolute left-1/2 top-1/2 pointer-events-auto"
+          className="absolute left-1/2 top-1/2 pointer-events-auto orbit-anim"
         >
           {innerStack.map((tech, i) => {
             const angle = (i / innerStack.length) * 2 * Math.PI - Math.PI / 2;
@@ -131,7 +133,7 @@ export function TechStackOrbit({ isDayMode }: TechStackOrbitProps) {
                   transform: "translate(-50%, -50%)",
                   animation: "counterOrbit 30s linear infinite",
                 }}
-                className={`absolute flex items-center justify-center gap-1.5 sm:gap-2 bg-[#10121B] border-[2px] border-[#A18AFF] shadow-[0_0_12px_rgba(161,143,255,0.6)] px-2 ${fontSize} cursor-pointer select-none`}
+                className={`absolute flex items-center justify-center gap-1.5 sm:gap-2 bg-[#10121B] border-[2px] border-[#A18AFF] shadow-[0_0_12px_rgba(161,143,255,0.6)] px-2 ${fontSize} cursor-pointer select-none orbit-anim transition-all duration-300 hover:scale-125 hover:shadow-[0_0_25px_rgba(161,143,255,0.9)] hover:z-20`}
               >
                 <Image
                   src={tech.icon}
@@ -149,7 +151,7 @@ export function TechStackOrbit({ isDayMode }: TechStackOrbitProps) {
         {/* Outer Orbit (60s) */}
         <div
           style={{ animation: "outerOrbit 60s linear infinite", transformOrigin: "0 0" }}
-          className="absolute left-1/2 top-1/2 pointer-events-auto"
+          className="absolute left-1/2 top-1/2 pointer-events-auto orbit-anim"
         >
           {outerStack.map((tech, i) => {
             const angle = (i / outerStack.length) * 2 * Math.PI - Math.PI / 2;
@@ -167,7 +169,7 @@ export function TechStackOrbit({ isDayMode }: TechStackOrbitProps) {
                   transform: "translate(-50%, -50%)",
                   animation: "counterOrbit 60s linear infinite",
                 }}
-                className={`absolute flex items-center justify-center gap-1.5 sm:gap-2 bg-[#10121B] border-[2px] border-[#A18AFF] shadow-[0_0_12px_rgba(161,143,255,0.6)] px-2 ${fontSize} cursor-pointer select-none`}
+                className={`absolute flex items-center justify-center gap-1.5 sm:gap-2 bg-[#10121B] border-[2px] border-[#A18AFF] shadow-[0_0_12px_rgba(161,143,255,0.6)] px-2 ${fontSize} cursor-pointer select-none orbit-anim transition-all duration-300 hover:scale-125 hover:shadow-[0_0_25px_rgba(161,143,255,0.9)] hover:z-20`}
               >
                 <Image
                   src={tech.icon}

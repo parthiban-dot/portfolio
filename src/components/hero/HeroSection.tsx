@@ -1,9 +1,19 @@
 "use client";
 
-import React from "react";
-import { motion, type Variants } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence, type Variants } from "framer-motion";
 
 export function HeroSection() {
+  const [wordIndex, setWordIndex] = useState(0);
+  const words = ["ideas", "systems", "designs", "visions"];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setWordIndex((prev) => (prev + 1) % words.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, [words.length]);
+
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     show: {
@@ -51,9 +61,24 @@ export function HeroSection() {
 
         <motion.h2
           variants={itemVariants}
-          className="mt-9 text-[#FFEDC2] text-lg sm:text-2xl md:text-4xl font-semibold px-2 sm:px-0"
+          className="mt-9 text-[#FFEDC2] text-lg sm:text-2xl md:text-4xl font-semibold px-2 sm:px-0 flex flex-wrap justify-center items-center gap-x-2"
         >
-          The developer who brings ideas to life while the world sleeps.
+          <span>The developer who brings</span>
+          <span className="relative inline-flex flex-col h-[1.2em] overflow-hidden min-w-[120px] items-center justify-center text-[#A18AFF]">
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={words[wordIndex]}
+                initial={{ y: 40, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -40, opacity: 0 }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
+                className="absolute"
+              >
+                {words[wordIndex]}
+              </motion.span>
+            </AnimatePresence>
+          </span>
+          <span>to life while the world sleeps.</span>
         </motion.h2>
 
         <motion.p
