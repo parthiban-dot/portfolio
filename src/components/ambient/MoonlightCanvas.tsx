@@ -25,7 +25,19 @@ export function MoonlightCanvas() {
       initStars();
     };
 
+    const mouse = { x: -1000, y: -1000 };
+    const handleMouseMove = (e: MouseEvent) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    };
+    const handleMouseLeave = () => {
+      mouse.x = -1000;
+      mouse.y = -1000;
+    };
+
     window.addEventListener("resize", handleResize);
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mouseout", handleMouseLeave);
 
     interface Star {
       x: number;
@@ -35,6 +47,8 @@ export function MoonlightCanvas() {
       targetAlpha: number;
       twinkleSpeed: number;
       vy: number; // Vertical velocity
+      vx: number; // Horizontal velocity (for magnetic pull recovery)
+      baseX: number; // Initial X
     }
 
     let stars: Star[] = [];
@@ -44,14 +58,17 @@ export function MoonlightCanvas() {
       const starCount = Math.floor((width * height) / 4000); // Higher density
       for (let i = 0; i < starCount; i++) {
         const alpha = Math.random() * 0.8 + 0.2;
+        const x = Math.random() * width;
         stars.push({
-          x: Math.random() * width,
+          x,
+          baseX: x,
           y: Math.random() * height,
           radius: Math.random() * 1.5 + 0.5,
           alpha,
           targetAlpha: alpha,
           twinkleSpeed: Math.random() * 0.01 + 0.005,
           vy: Math.random() * 0.8 + 0.3, // Faster drift upwards
+          vx: 0,
         });
       }
     };
@@ -70,11 +87,36 @@ export function MoonlightCanvas() {
           star.targetAlpha = Math.random() * 0.8 + 0.2;
         }
 
-        // Move stars upwards
-        star.y -= star.vy;
+        // Magnetic Pull Logic
+        const dx = mouse.x - star.x;
+        const dy = mouse.y - star.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        if (distance < 140) {
+          // Slight pull towards mouse
+          star.vx += dx * 0.0001;
+          star.vy -= dy * 0.0001; // counteract normal upwards velocity slightly
+          
+          // Draw Constellation Line
+          ctx.beginPath();
+          ctx.moveTo(star.x, star.y);
+          ctx.lineTo(mouse.x, mouse.y);
+          ctx.strokeStyle = `rgba(161, 138, 255, ${0.4 - distance / 350})`; // subtle purple glow
+          ctx.lineWidth = 0.6;
+          ctx.stroke();
+        } else {
+          // Return to normal vertical flow
+          star.vx *= 0.95; // dampen horizontal velocity
+        }
+
+        // Move stars
+        star.x += star.vx;
+        star.y -= Math.max(0.1, star.vy); // ensure it always moves up
+        
         if (star.y < 0) {
           star.y = height;
           star.x = Math.random() * width;
+          star.vx = 0;
         }
 
         ctx.beginPath();
@@ -97,6 +139,8 @@ export function MoonlightCanvas() {
 
     return () => {
       window.removeEventListener("resize", handleResize);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseout", handleMouseLeave);
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
     };
   }, []);
