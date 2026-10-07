@@ -82,26 +82,7 @@ export function ContactOrbit() {
 
 
         {/* Center Rotating Earth */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none flex items-center justify-center">
-          <div
-            style={{
-              width: `${earthSize}px`,
-              height: `${earthSize}px`,
-              animation: "spinSlow 60s linear infinite",
-              transformOrigin: "center center",
-            }}
-            className="rounded-full overflow-hidden pointer-events-none"
-          >
-            <Image
-              src="/images/earth.png"
-              alt="Earth"
-              width={earthSize}
-              height={earthSize}
-              className="object-cover w-full h-full select-none pointer-events-none"
-              priority
-            />
-          </div>
-        </div>
+        <CenterEarth earthSize={earthSize} />
 
         {/* Inner Orbit (30s) */}
         <div
@@ -208,5 +189,63 @@ export function ContactOrbit() {
         }
       `}</style>
     </section>
+  );
+}
+
+function CenterEarth({ earthSize }: { earthSize: number }) {
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const [tiltStyle, setTiltStyle] = React.useState({ transform: "perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)" });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    // Calculate rotation (-15 to 15 degrees)
+    const rotateX = ((y - centerY) / centerY) * -15;
+    const rotateY = ((x - centerX) / centerX) * 15;
+    
+    setTiltStyle({
+      transform: `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setTiltStyle({ transform: "perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)" });
+  };
+
+  return (
+    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-auto flex items-center justify-center">
+      <div 
+        ref={containerRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{ ...tiltStyle, transition: "transform 0.1s ease-out", width: `${earthSize}px`, height: `${earthSize}px` }}
+        className="rounded-full flex items-center justify-center cursor-pointer"
+      >
+        <div
+          style={{
+            width: "100%",
+            height: "100%",
+            animation: "spinSlow 60s linear infinite",
+            transformOrigin: "center center",
+          }}
+          className="rounded-full overflow-hidden pointer-events-none relative flex items-center justify-center shadow-[0_0_50px_rgba(161,143,255,0.2)]"
+        >
+          <Image
+            src="/images/earth.png"
+            alt="Earth"
+            width={earthSize}
+            height={earthSize}
+            className="object-cover w-full h-full select-none pointer-events-none"
+            priority
+          />
+        </div>
+      </div>
+    </div>
   );
 }
