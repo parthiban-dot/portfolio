@@ -61,10 +61,10 @@ export function HeroSection() {
 
         <motion.h2
           variants={itemVariants}
-          className="mt-9 text-[#FFEDC2] text-lg sm:text-2xl md:text-4xl font-semibold px-2 sm:px-0 flex flex-wrap justify-center items-center gap-x-2"
+          className="mt-9 text-[#FFEDC2] text-lg sm:text-2xl md:text-4xl font-semibold px-2 sm:px-0 leading-normal"
         >
-          <span>The developer who brings</span>
-          <span className="relative inline-flex flex-col h-[1.2em] overflow-hidden min-w-[120px] items-center justify-center text-[#A18AFF]">
+          The developer who brings{" "}
+          <span className="relative inline-flex justify-center items-center min-w-[90px] sm:min-w-[120px] md:min-w-[150px] overflow-hidden h-[1.2em] text-[#A18AFF] align-bottom -mb-[0.1em]">
             <AnimatePresence mode="wait">
               <motion.span
                 key={words[wordIndex]}
@@ -77,8 +77,8 @@ export function HeroSection() {
                 {words[wordIndex]}
               </motion.span>
             </AnimatePresence>
-          </span>
-          <span>to life while the world sleeps.</span>
+          </span>{" "}
+          to life while the world sleeps.
         </motion.h2>
 
         <motion.p
