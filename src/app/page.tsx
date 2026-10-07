@@ -21,20 +21,14 @@ export default function Home() {
       {/* Background Layer */}
       {isDayMode ? (
         <div className="fixed inset-0 z-0 pointer-events-none transition-opacity duration-1000 opacity-100">
-          {/* Base Twilight Gradient */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#2b1836] via-[#101223] to-[#03040A]" />
-          
-          {/* Sun / Dawn Glow */}
-          <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[80vw] h-[80vw] max-w-[1000px] max-h-[1000px] rounded-full blur-[120px] opacity-60 bg-[radial-gradient(circle,rgba(255,140,100,0.4)_0%,rgba(255,80,120,0.1)_40%,transparent_70%)]" />
-          
-          {/* Drifting Clouds Texture */}
+          {/* Gorgeous Daytime Blue Sky with Clouds */}
           <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40 animate-clouds-drift mix-blend-screen" 
-            style={{ backgroundImage: "url('https://images.unsplash.com/photo-1534081333815-b56cfcd8450c?q=80&w=3000&auto=format&fit=crop')" }}
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-100 animate-clouds-drift" 
+            style={{ backgroundImage: "url('https://images.unsplash.com/photo-1513002749550-c59d220b8e42?q=80&w=3000&auto=format&fit=crop')" }}
           />
           
-          {/* Bottom Dark Vignette so text is always readable */}
-          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#03040A] to-transparent opacity-90" />
+          {/* Gradient Overlay for Text Readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#03040A]/70 via-[#03040A]/30 to-[#03040A]/80" />
         </div>
       ) : (
         <MoonlightCanvas />
