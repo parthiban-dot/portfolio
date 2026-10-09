@@ -195,39 +195,8 @@ export function ContactOrbit() {
 }
 
 function CenterEarth({ earthSize }: { earthSize: number }) {
-  const containerRef = React.useRef<HTMLDivElement>(null);
-  const [tiltStyle, setTiltStyle] = React.useState({ transform: "translate(-50%, -50%) perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)" });
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    
-    // Calculate rotation (-15 to 15 degrees)
-    const rotateX = ((y - centerY) / centerY) * -15;
-    const rotateY = ((x - centerX) / centerX) * 15;
-    
-    setTiltStyle({
-      transform: `translate(-50%, -50%) perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`
-    });
-  };
-
-  const handleMouseLeave = () => {
-    setTiltStyle({ transform: "translate(-50%, -50%) perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)" });
-  };
-
   return (
-    <div 
-      className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-auto flex items-center justify-center"
-      ref={containerRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{ ...tiltStyle, transition: "transform 0.1s ease-out" }}
-    >
+    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none flex items-center justify-center">
       <div
         style={{
           width: `${earthSize}px`,

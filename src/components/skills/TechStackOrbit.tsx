@@ -168,79 +168,46 @@ export function TechStackOrbit({ isDayMode }: TechStackOrbitProps) {
 }
 
 function CenterPlanet({ isDayMode, centerSize }: { isDayMode: boolean; centerSize: number }) {
-  const containerRef = React.useRef<HTMLDivElement>(null);
-  const [tiltStyle, setTiltStyle] = React.useState({ transform: "perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)" });
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    
-    // Calculate rotation (-15 to 15 degrees)
-    const rotateX = ((y - centerY) / centerY) * -15;
-    const rotateY = ((x - centerX) / centerX) * 15;
-    
-    setTiltStyle({
-      transform: `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`
-    });
-  };
-
-  const handleMouseLeave = () => {
-    setTiltStyle({ transform: "perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)" });
-  };
-
   return (
-    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-auto flex items-center justify-center">
-      <div 
-        ref={containerRef}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        style={{ ...tiltStyle, transition: "transform 0.1s ease-out", width: `${centerSize}px`, height: `${centerSize}px` }}
-        className="rounded-full flex items-center justify-center cursor-pointer"
+    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none flex items-center justify-center">
+      <div
+        style={{
+          width: `${centerSize}px`,
+          height: `${centerSize}px`,
+          animation: "spinSlow 60s linear infinite",
+          transformOrigin: "center center",
+        }}
+        className="rounded-full pointer-events-none relative flex items-center justify-center"
       >
-        <div
-          style={{
-            width: "100%",
-            height: "100%",
-            animation: "spinSlow 60s linear infinite",
-            transformOrigin: "center center",
-          }}
-          className="rounded-full pointer-events-none relative flex items-center justify-center"
-        >
-          {isDayMode ? (
-            <Image
-              src="/images/sun.jpg"
-              alt="Sun"
-              width={centerSize * 1.5}
-              height={centerSize * 1.5}
-              className="object-cover max-w-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 mix-blend-screen select-none pointer-events-none"
-              style={{ 
-                width: `${centerSize * 1.5}px`, 
-                height: `${centerSize * 1.5}px`,
-                WebkitMaskImage: "radial-gradient(circle at center, black 46%, transparent 49%)",
-                maskImage: "radial-gradient(circle at center, black 46%, transparent 49%)"
-              }}
-              priority
-            />
-          ) : (
-            <Image
-              src="/images/real.png"
-              alt="Moon"
-              width={centerSize}
-              height={centerSize}
-              className="object-cover w-full h-full select-none pointer-events-none mix-blend-screen brightness-[1.35] contrast-[1.1]"
-              style={{
-                WebkitMaskImage: "radial-gradient(circle at center, black 48%, transparent 50%)",
-                maskImage: "radial-gradient(circle at center, black 48%, transparent 50%)"
-              }}
-              priority
-            />
-          )}
-        </div>
+        {isDayMode ? (
+          <Image
+            src="/images/sun.jpg"
+            alt="Sun"
+            width={centerSize * 1.5}
+            height={centerSize * 1.5}
+            className="object-cover max-w-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 mix-blend-screen select-none pointer-events-none"
+            style={{ 
+              width: `${centerSize * 1.5}px`, 
+              height: `${centerSize * 1.5}px`,
+              WebkitMaskImage: "radial-gradient(circle at center, black 46%, transparent 49%)",
+              maskImage: "radial-gradient(circle at center, black 46%, transparent 49%)"
+            }}
+            priority
+          />
+        ) : (
+          <Image
+            src="/images/real.png"
+            alt="Moon"
+            width={centerSize}
+            height={centerSize}
+            className="object-cover w-full h-full select-none pointer-events-none mix-blend-screen brightness-[1.35] contrast-[1.1]"
+            style={{
+              WebkitMaskImage: "radial-gradient(circle at center, black 48%, transparent 50%)",
+              maskImage: "radial-gradient(circle at center, black 48%, transparent 50%)"
+            }}
+            priority
+          />
+        )}
       </div>
     </div>
   );
