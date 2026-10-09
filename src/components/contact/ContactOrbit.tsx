@@ -225,32 +225,30 @@ function CenterEarth({ earthSize }: { earthSize: number }) {
   };
 
   return (
-    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-auto flex items-center justify-center">
-      <div 
-        ref={containerRef}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        style={{ ...tiltStyle, transition: "transform 0.1s ease-out", width: `${earthSize}px`, height: `${earthSize}px` }}
-        className="rounded-full flex items-center justify-center cursor-pointer"
+    <div 
+      className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-auto flex items-center justify-center"
+      ref={containerRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ ...tiltStyle, transition: "transform 0.1s ease-out" }}
+    >
+      <div
+        style={{
+          width: `${earthSize}px`,
+          height: `${earthSize}px`,
+          animation: "spinSlow 60s linear infinite",
+          transformOrigin: "center center",
+        }}
+        className="rounded-full overflow-hidden pointer-events-none"
       >
-        <div
-          style={{
-            width: "100%",
-            height: "100%",
-            animation: "spinSlow 60s linear infinite",
-            transformOrigin: "center center",
-          }}
-          className="rounded-full overflow-hidden pointer-events-none relative flex items-center justify-center shadow-[0_0_50px_rgba(161,143,255,0.2)]"
-        >
-          <Image
-            src="/images/earth.png"
-            alt="Earth"
-            width={earthSize}
-            height={earthSize}
-            className="object-cover w-full h-full select-none pointer-events-none mix-blend-screen brightness-110"
-            priority
-          />
-        </div>
+        <Image
+          src="/images/earth.png"
+          alt="Earth"
+          width={earthSize}
+          height={earthSize}
+          className="object-cover w-full h-full select-none pointer-events-none"
+          priority
+        />
       </div>
     </div>
   );
