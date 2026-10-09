@@ -25,23 +25,9 @@ export function ResumeDrifter({ isDayMode }: ResumeDrifterProps) {
           {/* SVG for Rocket or Kite */}
           <div className={`relative w-16 h-16 sm:w-20 sm:h-20 ${isDayMode ? "rotate-[-10deg]" : "rotate-[45deg]"}`}>
             {isDayMode ? (
-              /* Kite SVG */
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 84" fill="none" className="w-full h-full drop-shadow-[0_4px_12px_rgba(255,255,255,0.4)]">
-                <path d="M32 4L48 24L32 52L16 24L32 4Z" fill="#F43F5E" />
-                <path d="M32 4L48 24L32 52L32 4Z" fill="#E11D48" />
-                <path d="M32 52 Q 40 60, 32 68 T 32 84" stroke="#F1F5F9" strokeWidth="1.5" fill="none" strokeDasharray="3 3"/>
-                <path d="M32 60 L 36 62 L 32 64 Z" fill="#3B82F6" />
-                <path d="M32 72 L 28 74 L 32 76 Z" fill="#EAB308" />
-              </svg>
+              <img src="/images/kite.png" alt="Kite" className="w-full h-full object-contain drop-shadow-[0_4px_12px_rgba(255,255,255,0.4)]" />
             ) : (
-              /* Rocket SVG */
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" className="w-full h-full drop-shadow-[0_0_15px_rgba(0,229,255,0.5)]">
-                <path d="M44.5 19.5C44.5 19.5 48.5 25.5 48.5 33.5C48.5 35.5 48 39 48 39L54 45V50L45 48C45 48 42 47 38.5 47C35 47 32 48 32 48L23 50V45L29 39C29 39 28.5 35.5 28.5 33.5C28.5 25.5 32.5 19.5 32.5 19.5L38.5 10L44.5 19.5Z" fill="#E2E8F0"/>
-                <path d="M38.5 10L44.5 19.5C44.5 19.5 48.5 25.5 48.5 33.5C48.5 35.5 48 39 48 39L54 45V50L45 48C45 48 42 47 38.5 47V10Z" fill="#CBD5E1"/>
-                <circle cx="38.5" cy="30" r="4.5" fill="#03040A" stroke="#00E5FF" strokeWidth="2"/>
-                <path d="M34.5 47.5L38.5 56L42.5 47.5" fill="#F59E0B"/>
-                <path d="M36 47.5L38.5 53L41 47.5" fill="#FCD34D"/>
-              </svg>
+              <img src="/images/rocket.png" alt="Rocket" className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(0,229,255,0.3)]" />
             )}
             
             {/* Resume Text Badge */}
