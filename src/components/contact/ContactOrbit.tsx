@@ -23,6 +23,7 @@ export function ContactOrbit() {
   const innerChannels: ContactChannel[] = [
     { name: "GitHub", icon: "/icons/github1.svg", url: "https://github.com/parthiban-dot" },
     { name: "LinkedIn", icon: "/icons/linkedin.svg", url: "https://www.linkedin.com/in/parthi-xii-581493376?utm_source=share_via&utm_content=profile&utm_medium=member_android" },
+    { name: "Resume", icon: "/icons/resume.svg", url: "/Parthiban_V_Resume.pdf" },
     { name: "Email", icon: "/icons/email.svg", url: "mailto:vinayagamparthiban07@gmail.com" },
   ];
 
@@ -125,10 +126,15 @@ export function ContactOrbit() {
                 href={channel.url}
                 target="_blank"
                 rel="noopener noreferrer"
+                download={channel.name === "Resume" ? "Parthiban_V_Resume.pdf" : undefined}
                 style={commonStyle}
                 className={commonClass}
               >
-                <Image src={channel.icon} alt={channel.name} width={iconSize} height={iconSize} className="shrink-0" />
+                {channel.name === "Resume" ? (
+                  <img src={channel.icon} alt={channel.name} width={iconSize} height={iconSize} className="shrink-0" />
+                ) : (
+                  <Image src={channel.icon} alt={channel.name} width={iconSize} height={iconSize} className="shrink-0" />
+                )}
                 <span className="text-[#E6E6F1] font-medium truncate">{channel.name}</span>
               </a>
             );
