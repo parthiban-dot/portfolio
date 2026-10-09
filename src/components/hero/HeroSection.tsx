@@ -2,8 +2,13 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
+import { ResumeDrifter } from "./ResumeDrifter";
 
-export function HeroSection() {
+interface HeroSectionProps {
+  isDayMode?: boolean;
+}
+
+export function HeroSection({ isDayMode = false }: HeroSectionProps) {
   const [wordIndex, setWordIndex] = useState(0);
   const words = ["ideas", "systems", "designs", "visions"];
 
@@ -46,6 +51,8 @@ export function HeroSection() {
 
   return (
     <div className="relative w-full min-h-[calc(100vh-100px)] flex items-center justify-center">
+      <ResumeDrifter isDayMode={isDayMode} />
+
       <motion.div
         className="flex flex-col items-center justify-center text-center px-4 max-w-5xl mx-auto"
         variants={containerVariants}

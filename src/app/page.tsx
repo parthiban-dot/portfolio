@@ -39,7 +39,7 @@ export default function Home() {
 
       {/* 2. Main Page Content */}
       <main className="w-full relative z-10">
-        <HeroSection />
+        <HeroSection isDayMode={isDayMode} />
         <AboutSection />
         <TechStackOrbit isDayMode={isDayMode} />
         <ProjectsSection isDayMode={isDayMode} />
