@@ -64,17 +64,17 @@ export function HeroSection({ isDayMode = false }: HeroSectionProps) {
       >
         <motion.h1
           variants={itemVariants}
-          className="text-[#E6E6F1] text-3xl sm:text-5xl md:text-5xl font-bold"
+          className={`${isDayMode ? "text-[#03040A]" : "text-[#E6E6F1]"} text-3xl sm:text-5xl md:text-5xl font-bold transition-colors duration-500`}
         >
           Hey, I'm Parthiban
         </motion.h1>
 
         <motion.h2
           variants={itemVariants}
-          className="mt-9 text-[#FFEDC2] text-lg sm:text-2xl md:text-4xl font-semibold px-2 sm:px-0 leading-normal"
+          className={`mt-9 ${isDayMode ? "text-[#475569]" : "text-[#FFEDC2]"} text-lg sm:text-2xl md:text-4xl font-semibold px-2 sm:px-0 leading-normal transition-colors duration-500`}
         >
           The developer who brings{" "}
-          <span className="relative inline-flex justify-center items-center min-w-[90px] sm:min-w-[120px] md:min-w-[150px] overflow-hidden h-[1.2em] align-bottom -mb-[0.1em] text-[#00E5FF] drop-shadow-[0_0_12px_rgba(0,229,255,0.8)]">
+          <span className={`relative inline-flex justify-center items-center min-w-[90px] sm:min-w-[120px] md:min-w-[150px] overflow-hidden h-[1.2em] align-bottom -mb-[0.1em] ${isDayMode ? "text-[#2563EB] drop-shadow-none" : "text-[#00E5FF] drop-shadow-[0_0_12px_rgba(0,229,255,0.8)]"} transition-colors duration-500`}>
             <AnimatePresence>
               <motion.span
                 key={words[wordIndex]}
@@ -93,7 +93,7 @@ export function HeroSection({ isDayMode = false }: HeroSectionProps) {
 
         <motion.p
           variants={itemVariants}
-          className="mt-9 text-[#B0B3C5] text-xs sm:text-base md:text-lg italic px-2 sm:px-0 max-w-[95%] md:max-w-[70%]"
+          className={`mt-9 ${isDayMode ? "text-[#475569]" : "text-[#B0B3C5]"} text-xs sm:text-base md:text-lg italic px-2 sm:px-0 max-w-[95%] md:max-w-[70%] transition-colors duration-500`}
         >
           Fueled by passion, I'm a full-stack web developer, designer and also aspiring AI engineer who turns ideas into intuitive, high-performance web experiences — day or night.
         </motion.p>
@@ -106,7 +106,7 @@ export function HeroSection({ isDayMode = false }: HeroSectionProps) {
             onClick={handleContactClick}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-7 py-3 bg-[#FFDFAF] text-[#03040A] font-medium text-base leading-6 tracking-[0.05em] hover:bg-[#FFEDC2] transition duration-300 cursor-pointer"
+            className={`px-7 py-3 ${isDayMode ? "bg-[#2563EB] text-white hover:bg-[#1D4ED8]" : "bg-[#FFDFAF] text-[#03040A] hover:bg-[#FFEDC2]"} font-medium text-base leading-6 tracking-[0.05em] transition duration-300 cursor-pointer`}
           >
             Contact me
           </motion.button>

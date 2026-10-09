@@ -20,15 +20,9 @@ export default function Home() {
       
       {/* Background Layer */}
       {isDayMode ? (
-        <div className="fixed inset-0 z-0 pointer-events-none transition-opacity duration-1000 opacity-100">
-          {/* Gorgeous Daytime Blue Sky with Clouds */}
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-100 animate-clouds-drift" 
-            style={{ backgroundImage: "url('https://images.unsplash.com/photo-1513002749550-c59d220b8e42?q=80&w=3000&auto=format&fit=crop')" }}
-          />
-          
-          {/* Gradient Overlay for Text Readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#03040A]/70 via-[#03040A]/30 to-[#03040A]/80" />
+        <div className="fixed inset-0 z-0 pointer-events-none transition-opacity duration-1000 opacity-100 bg-gradient-to-b from-[#87CEEB] via-[#B0E0E6] to-[#E0F6FF]">
+          {/* Light animated CSS clouds could go here, but a clean bright gradient works best for text contrast */}
+          <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.8),transparent_70%)]" />
         </div>
       ) : (
         <MoonlightCanvas />

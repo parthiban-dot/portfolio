@@ -26,7 +26,7 @@ export function Navbar({ isDayMode, toggleDayMode }: NavbarProps) {
       initial="hidden"
       animate="show"
     >
-      <h3 className="text-[#E6E6F1] text-[20px] sm:text-[24px] md:text-[28px] font-semibold leading-[28px] sm:leading-[32px] md:leading-[36px] tracking-[0em] uppercase absolute top-4 left-0 md:top-5 md:left-0 pl-4 md:pl-6">
+      <h3 className={`${isDayMode ? "text-[#03040A]" : "text-[#E6E6F1]"} text-[20px] sm:text-[24px] md:text-[28px] font-semibold leading-[28px] sm:leading-[32px] md:leading-[36px] tracking-[0em] uppercase absolute top-4 left-0 md:top-5 md:left-0 pl-4 md:pl-6 transition-colors duration-500`}>
         PARTHIBAN
       </h3>
 
