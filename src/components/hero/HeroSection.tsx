@@ -88,15 +88,33 @@ export function HeroSection() {
           Fueled by passion, I'm a full-stack web developer, designer and also aspiring AI engineer who turns ideas into intuitive, high-performance web experiences — day or night.
         </motion.p>
 
-        <motion.button
+        <motion.div
           variants={itemVariants}
-          onClick={handleContactClick}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="mt-12 px-7 py-3 bg-[#FFDFAF] text-[#03040A] font-medium text-base leading-6 tracking-[0.05em] hover:bg-[#FFEDC2] transition duration-300 cursor-pointer"
+          className="mt-12 flex flex-col sm:flex-row items-center gap-5"
         >
-          Contact me
-        </motion.button>
+          <motion.button
+            onClick={handleContactClick}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-7 py-3 bg-[#FFDFAF] text-[#03040A] font-medium text-base leading-6 tracking-[0.05em] hover:bg-[#FFEDC2] transition duration-300 cursor-pointer"
+          >
+            Contact me
+          </motion.button>
+          
+          <motion.a
+            href="/Parthiban_V_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-7 py-3 bg-transparent border border-[#A18AFF] text-[#E6E6F1] font-medium text-base leading-6 tracking-[0.05em] hover:bg-[#A18AFF]/10 transition duration-300 cursor-pointer flex items-center gap-2"
+          >
+            View Resume
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m.75 12l3 3m0 0l3-3m-3 3v-6m-1.5-9H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+            </svg>
+          </motion.a>
+        </motion.div>
       </motion.div>
     </div>
   );
