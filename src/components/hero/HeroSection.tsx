@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
-import { ResumeDrifter } from "./ResumeDrifter";
 
 interface HeroSectionProps {
   isDayMode?: boolean;
@@ -51,11 +50,6 @@ export function HeroSection({ isDayMode = false }: HeroSectionProps) {
 
   return (
     <div className="relative w-full min-h-[calc(100vh-100px)] flex items-center justify-center">
-      {/* Positioned between Hero and About Me on the right side */}
-      <div className="absolute bottom-[-40px] sm:bottom-0 right-[5%] sm:right-[10%] md:right-[15%] z-50">
-        <ResumeDrifter isDayMode={isDayMode} />
-      </div>
-
       <motion.div
         className="relative flex flex-col items-center justify-center text-center px-4 max-w-5xl mx-auto"
         variants={containerVariants}
