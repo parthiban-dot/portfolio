@@ -241,7 +241,7 @@ function CenterEarth({ earthSize }: { earthSize: number }) {
             alt="Earth"
             width={earthSize}
             height={earthSize}
-            className="object-cover w-full h-full select-none pointer-events-none"
+            className="object-cover w-full h-full select-none pointer-events-none mix-blend-screen brightness-110"
             priority
           />
         </div>
