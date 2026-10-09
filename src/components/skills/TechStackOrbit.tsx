@@ -69,7 +69,7 @@ export function TechStackOrbit({ isDayMode }: TechStackOrbitProps) {
       <div className="relative w-full flex-1 mt-12 sm:mt-16 xl:mt-20 min-h-[520px] sm:min-h-[700px] md:min-h-[900px]">
         
         {/* Center Rotating Moon / Sun */}
-        <CenterPlanet isDayMode={isDayMode} centerSize={centerSize} />
+        <CenterPlanet isDayMode={isDayMode ?? false} centerSize={centerSize} />
 
         {/* Inner Orbit (30s) */}
         <div
