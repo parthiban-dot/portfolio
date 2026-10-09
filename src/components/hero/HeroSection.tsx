@@ -51,15 +51,17 @@ export function HeroSection({ isDayMode = false }: HeroSectionProps) {
 
   return (
     <div className="relative w-full min-h-[calc(100vh-100px)] flex items-center justify-center">
+      {/* Positioned between Hero and About Me on the right side */}
+      <div className="absolute bottom-[-40px] sm:bottom-0 right-[5%] sm:right-[10%] md:right-[15%] z-50">
+        <ResumeDrifter isDayMode={isDayMode} />
+      </div>
+
       <motion.div
         className="relative flex flex-col items-center justify-center text-center px-4 max-w-5xl mx-auto"
         variants={containerVariants}
         initial="hidden"
         animate="show"
       >
-        <div className="absolute right-[-20px] sm:right-[-80px] md:right-[-120px] top-[10%] sm:top-[20%]">
-          <ResumeDrifter isDayMode={isDayMode} />
-        </div>
         <motion.h1
           variants={itemVariants}
           className="text-[#E6E6F1] text-3xl sm:text-5xl md:text-5xl font-bold"
