@@ -196,7 +196,7 @@ export function ContactOrbit() {
 
 function CenterEarth({ earthSize }: { earthSize: number }) {
   const containerRef = React.useRef<HTMLDivElement>(null);
-  const [tiltStyle, setTiltStyle] = React.useState({ transform: "perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)" });
+  const [tiltStyle, setTiltStyle] = React.useState({ transform: "translate(-50%, -50%) perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)" });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current) return;
@@ -212,12 +212,12 @@ function CenterEarth({ earthSize }: { earthSize: number }) {
     const rotateY = ((x - centerX) / centerX) * 15;
     
     setTiltStyle({
-      transform: `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`
+      transform: `translate(-50%, -50%) perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`
     });
   };
 
   const handleMouseLeave = () => {
-    setTiltStyle({ transform: "perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)" });
+    setTiltStyle({ transform: "translate(-50%, -50%) perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)" });
   };
 
   return (
