@@ -12,12 +12,8 @@ export function ResumeDrifter({ isDayMode }: ResumeDrifterProps) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div 
-      className="absolute z-20 w-full h-full pointer-events-none overflow-hidden"
-      style={{ top: 0, left: 0 }}
-    >
-      <div className={`drifter-container ${isDayMode ? "kite-path" : "rocket-path"} absolute pointer-events-auto`}>
-        
+    <>
+      <div className={`absolute z-20 pointer-events-auto flex items-center justify-center ${isDayMode ? "kite-hover" : "rocket-hover"}`}>
         {/* Hover trigger & item wrapper */}
         <a 
           href="/Parthiban_V_Resume.pdf"
@@ -27,7 +23,7 @@ export function ResumeDrifter({ isDayMode }: ResumeDrifterProps) {
           onMouseLeave={() => setIsHovered(false)}
         >
           {/* SVG for Rocket or Kite */}
-          <div className="relative w-16 h-16 sm:w-20 sm:h-20 animate-wiggle">
+          <div className={`relative w-16 h-16 sm:w-20 sm:h-20 ${isDayMode ? "rotate-[-10deg]" : "rotate-[45deg]"}`}>
             {isDayMode ? (
               /* Kite SVG */
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 84" fill="none" className="w-full h-full drop-shadow-[0_4px_12px_rgba(255,255,255,0.4)]">
@@ -49,7 +45,7 @@ export function ResumeDrifter({ isDayMode }: ResumeDrifterProps) {
             )}
             
             {/* Resume Text Badge */}
-            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-sm border border-white/20 text-white text-[10px] sm:text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-lg">
+            <div className={`absolute ${isDayMode ? "bottom-[-20px] left-[50%] -translate-x-1/2" : "bottom-[-20px] left-[-20px] -rotate-[45deg]"} bg-[#10121B] border border-white/20 text-white text-[10px] sm:text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-[0_0_10px_rgba(255,255,255,0.2)]`}>
               Resume
             </div>
           </div>
@@ -62,7 +58,7 @@ export function ResumeDrifter({ isDayMode }: ResumeDrifterProps) {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 15, scale: 0.95 }}
                 transition={{ duration: 0.2 }}
-                className={`absolute top-full mt-6 left-1/2 -translate-x-1/2 w-[220px] h-[300px] ${isDayMode ? "bg-white/80 border-[#3B82F6]/50 shadow-[0_0_30px_rgba(59,130,246,0.2)] text-[#03040A]" : "bg-[#10121B]/90 border-[#A18AFF]/50 shadow-[0_0_30px_rgba(161,143,255,0.4)] text-[#E6E6F1]"} backdrop-blur-md border rounded-xl overflow-hidden z-50 flex flex-col pointer-events-none`}
+                className={`absolute top-full mt-8 left-1/2 -translate-x-1/2 w-[220px] h-[300px] ${isDayMode ? "bg-white/80 border-[#3B82F6]/50 shadow-[0_0_30px_rgba(59,130,246,0.2)] text-[#03040A]" : "bg-[#10121B]/90 border-[#A18AFF]/50 shadow-[0_0_30px_rgba(161,143,255,0.4)] text-[#E6E6F1]"} backdrop-blur-md border rounded-xl overflow-hidden z-50 flex flex-col pointer-events-none`}
               >
                 <div className={`py-1.5 px-3 border-b flex items-center justify-between ${isDayMode ? "bg-[#3B82F6]/10 border-[#3B82F6]/30" : "bg-[#A18AFF]/20 border-[#A18AFF]/30"}`}>
                   <span className="text-xs font-medium">Resume Preview</span>
@@ -82,40 +78,22 @@ export function ResumeDrifter({ isDayMode }: ResumeDrifterProps) {
               </motion.div>
             )}
           </AnimatePresence>
-
         </a>
       </div>
 
       <style>{`
-        .rocket-path {
-          animation: floatRocket 30s ease-in-out infinite alternate;
+        .rocket-hover {
+          animation: hoverInPlace 4s ease-in-out infinite alternate;
         }
-        .kite-path {
-          animation: floatKite 30s ease-in-out infinite alternate;
+        .kite-hover {
+          animation: hoverInPlace 3s ease-in-out infinite alternate;
         }
-        /* Keep it floating relatively slow so user can catch it! */
-        @keyframes floatRocket {
-          0% { transform: translate(15vw, 60vh) rotate(20deg); }
-          25% { transform: translate(35vw, 25vh) rotate(45deg); }
-          50% { transform: translate(65vw, 50vh) rotate(70deg); }
-          75% { transform: translate(80vw, 20vh) rotate(45deg); }
-          100% { transform: translate(50vw, 75vh) rotate(0deg); }
-        }
-        @keyframes floatKite {
-          0% { transform: translate(20vw, 15vh) rotate(-10deg); }
-          33% { transform: translate(45vw, 35vh) rotate(5deg); }
-          66% { transform: translate(75vw, 20vh) rotate(-5deg); }
-          100% { transform: translate(60vw, 55vh) rotate(10deg); }
-        }
-        .animate-wiggle {
-          animation: wiggle 3s ease-in-out infinite;
-        }
-        @keyframes wiggle {
-          0%, 100% { transform: rotate(-5deg); }
-          50% { transform: rotate(5deg); }
+        @keyframes hoverInPlace {
+          0% { transform: translateY(-10px); }
+          100% { transform: translateY(10px); }
         }
       `}</style>
-    </div>
+    </>
   );
 }
 
