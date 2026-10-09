@@ -23,13 +23,13 @@ export default function Home() {
         <div className="fixed inset-0 z-0 pointer-events-none transition-opacity duration-1000 opacity-100">
           {/* Gorgeous Daytime Blue Sky with Clouds */}
           <div 
-            className="absolute inset-0 bg-[#87CEEB] bg-cover bg-[center_top] bg-no-repeat opacity-100 animate-clouds-drift" 
+            className="absolute inset-0 bg-[#001d3d] bg-cover bg-[center_top] bg-no-repeat opacity-100 animate-clouds-drift" 
             style={{ backgroundImage: "url('/images/clouds.jpg')" }}
           />
           
-          {/* Light Overlay to ensure the dark text remains perfectly readable */}
-          <div className="absolute inset-0 bg-white/20 backdrop-blur-[2px]" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#87CEEB]/40 via-transparent to-[#E0F6FF]/60" />
+          {/* Deep blue cinematic overlay to ensure white text remains perfectly readable and beautiful */}
+          <div className="absolute inset-0 bg-blue-950/40 mix-blend-multiply" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#03040A]/80 via-blue-900/40 to-[#03040A]/90" />
         </div>
       ) : (
         <MoonlightCanvas />
