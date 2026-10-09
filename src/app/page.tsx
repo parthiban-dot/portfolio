@@ -23,7 +23,7 @@ export default function Home() {
         <div className="fixed inset-0 z-0 pointer-events-none transition-opacity duration-1000 opacity-100">
           {/* Gorgeous Daytime Blue Sky with Clouds */}
           <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-100 animate-clouds-drift" 
+            className="absolute inset-0 bg-[#87CEEB] bg-cover bg-center bg-no-repeat opacity-100 animate-clouds-drift" 
             style={{ backgroundImage: "url('https://images.unsplash.com/photo-1513002749550-c59d220b8e42?q=80&w=3000&auto=format&fit=crop')" }}
           />
           
