@@ -130,11 +130,7 @@ export function ContactOrbit() {
                 style={commonStyle}
                 className={commonClass}
               >
-                {channel.name === "Resume" ? (
-                  <img src={channel.icon} alt={channel.name} width={iconSize} height={iconSize} className="shrink-0" />
-                ) : (
-                  <Image src={channel.icon} alt={channel.name} width={iconSize} height={iconSize} className="shrink-0" />
-                )}
+                <Image src={channel.icon} alt={channel.name} width={iconSize} height={iconSize} className="shrink-0 rounded-[2px]" />
                 <span className="text-[#E6E6F1] font-medium truncate">{channel.name}</span>
               </a>
             );
